@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    table{
+      background-color: #f00;
+      width: 300px;
+      height: 200px;
+    }
+    td{
+      background-color: rgb(255,128,128);
+      border: 10px solid red;
+    }
+    .red {
+      background-color: #f00;
+      color: red;
+    }
+    .top{
+      border-top: 0;
+    }
+    .left{
+      border-left: 0;
+    }
+    .right{
+      border-right: 0;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td class="top left">11</td>
+      <td class="top">22</td>
+      <td class="top">33</td>
+      <td class="top right">44</td>
+    </tr>
+    <tr>
+      <td class="left">55</td>
+      <td class="red">55</td>
+      <td class="red">55</td>
+      <td class="right">66</td>
+    </tr>
+    <tr>
+      <td class="red"></td>
+    </tr>
+  </table>
+</body>
+</html>
