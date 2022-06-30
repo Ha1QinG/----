@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      background-color: #f00;
+      width: 300px;
+      height: 200px;
+      text-align: justify;
+      text-align-last: justify;
+    }
+    .box span{
+      display: inline-block;
+      width: 60px;
+      background-color: #fcc;
+      vertical-align: top;
+      margin-bottom: 10px;
+
+    }
+    .box span:nth-last-child(1){
+      /* width: 100%; */
+    }
+  </style>
+
+</head>
+
+<body>
+  <p class="box">
+    <span>11</span>
+    <span>22</span>
+    <span>33</span>
+    <span>44</span>
+    <span>55</span>
+    <span>66</span>
+    <!-- <span></span> -->
+  </p>
+
+
+</body>
+
+</html>
