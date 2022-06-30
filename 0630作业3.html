@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 外盒子设置 */
+    .box {
+      width: 800px;
+      height: 400px;
+      background-color: rgb(244, 244, 244);
+      margin: 0 auto;
+    }
+    /* 所有p标签设置 */
+    .box p {
+      display: inline-block;
+      background-color: rgb(230, 207, 199);
+      vertical-align: top;
+    }
+    /* 大盒子设置 */
+    .big {
+      height: 300px;
+      margin: 50px 20px;
+      width: 150px;
+    }
+    /* 小盒子设置 */
+    .small{
+      display: inline-block;
+      height: 300px;
+      width: 400px;
+    }
+    .small p{
+      display: inline-block;
+      height: 120px;
+      width: 100px;
+      margin: 50px 30px 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <p class="big">1</p>
+    <p class="big">2</p>
+    <div class="small">
+      <p>33</p>
+      <p>44</p>
+      <p>55</p>
+      <p>66</p>
+    </div>
+  </div>
+</body>
+
+</html>

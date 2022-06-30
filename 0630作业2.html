@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    /* 左右布局 */
+    nav{
+      display: inline-block;
+      width: 100px;
+      height: 100vh;
+      background-color: #fcc;
+    }
+    article{
+      display: inline-block;
+      width: calc(100% - 100px);
+      height: 100vh;
+      background-color: #3c3;
+    }
+
+    .box{
+      width: 620px;
+      background-color: #ddc;
+      font-size: 0;
+    }
+    .box p{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      font-size: 20px;
+      display: inline-block;
+      margin-top: 20px;
+      margin-right: 10px;
+    }
+    .box p:nth-child(3n){
+      margin-right: 0;
+    }
+
+
+  </style>
+
+</head>
+<body>
+
+  <!-- 标签之间没有间隙 -->
+  <nav> </nav><article> </article>
+
+  <!-- <div class="box">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+  </div> -->
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+    }
+    .box{
+      border: 1px solid red;
+      font-size: 0;
+    }
+    .box1{
+      height: 100vh;
+      width: 200px;
+      background-color: #f0c;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .box2{
+      height: 100vh;
+      width: calc(100% - 200px);
+      display: inline-block;
+      background-color: #9ff;
+    }
+    header{
+      height: 60px;
+      background-color: #ddd;
+    }
+    main{
+      height: calc(100% - 120px);
+      background-color: #333;
+    }
+    footer{
+      height: 60px;
+      background-color: #9a9;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="box">
+    <div class="box1" style="font-size:20px;">
+      aside
+    </div>
+    <div class="box2" style="font-size: 20px;">
+      <header>header</header>
+      <main>main</main>
+      <footer>footer</footer>
+    </div>
+  </div>
+</body>
+</html>
