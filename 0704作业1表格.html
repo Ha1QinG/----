@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .table{
+      width: 400px;
+      text-align: center;
+      border-collapse: collapse;
+    }
+    .table th,
+    .table td{
+      padding: 6px 8px;
+    }
+    .tab-border th,
+    .tab-border td{
+      border: 2px solid #FFF4E4;
+    }
+    .tab-color tr:nth-child(2n){
+      background-color: #FFF4E4;
+    }
+    .tab-color tr:nth-child(2n-1){
+      background-color: #FED68F;
+    }
+    .tab-color tr:nth-child(1){
+      background-color: #FE6219;
+    }
+  </style>
+</head>
+<body>
+
+  <table class="table tab-border tab-color">
+    <tr><th colspan="4">成绩榜</th></tr>
+    <tr>
+      <th>学号</th>
+      <th>姓名</th>
+      <th>学科</th>
+      <th>成绩</th>
+    </tr>
+    <tr>
+      <td>001</td>
+      <td>张三</td>
+      <td>语文</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <td>002</td>
+      <td>李四</td>
+      <td>数学</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>003</td>
+      <td>王五</td>
+      <td>英语</td>
+      <td>95</td>
+    </tr>
+  </table>
+</body>
+</html>

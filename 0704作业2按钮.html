@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn {
+      width: 500px;
+    }
+
+    .btn button {
+      padding: 6px 8px;
+      border-radius: 5px;
+      border: 1px solid #E0E2E9;
+      background-color: #fff;
+    }
+
+    .color button:nth-child(2n) {
+      background-color: #409EFF;
+    }
+    .color button:nth-child(2n-1) {
+      background-color: #67C23A;
+    }
+
+    .circle button{
+      border-radius: 15px;
+    }
+
+    .trans button{
+      opacity: .5;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h2>空白按钮</h2>
+  <div class="btn">
+    <button>默认按钮</button>
+    <button>主要按钮</button>
+    <button>信息按钮</button>
+    <button>警告按钮</button>
+    <button>危险按钮</button>
+  </div>
+
+  <h2>颜色按钮</h2>
+  <div class="btn color">
+    <button>默认按钮</button>
+    <button>主要按钮</button>
+    <button>信息按钮</button>
+    <button>警告按钮</button>
+    <button>危险按钮</button>
+  </div>
+
+  <h2>圆角按钮</h2>
+  <div class="btn color circle">
+    <button>默认按钮</button>
+    <button>主要按钮</button>
+    <button>信息按钮</button>
+    <button>警告按钮</button>
+    <button>危险按钮</button>
+  </div>
+
+  <h2>半透明按钮</h2>
+  <div class="btn color circle trans">
+    <button>默认按钮</button>
+    <button>主要按钮</button>
+    <button>信息按钮</button>
+    <button>警告按钮</button>
+    <button>危险按钮</button>
+  </div>
+
+</body>
+
+</html>
