@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 100px;
+      height: 50px;
+      font-size: 20px;
+      font-weight: 600 ;
+      color: #ED1C24;
+      text-align: center;
+      line-height: 50px;
+      border: 4px solid #ED1C24;
+      border-right: none;
+
+      display: inline-block;
+
+      /* 方法二：使用两个伪元素添加渐变，从透明到红色到透明 */
+      /* background:linear-gradient( 225deg, transparent 20px ,#ED1C24 0); */
+      /* background:linear-gradient( 225deg, transparent 20px ,#ED1C24 0); */
+
+    }
+    .pad{
+      display: inline-block;
+      width: 37px;
+      height: 37px;
+
+      /* 利用旋转和定位，使一个透明且带边框的空白盒子放在第一个盒子后面 */
+      background-color: transparent;
+      transform:rotate(45deg) ;
+      border-top: 4px solid #ED1C24;
+      border-right: 4px solid #ED1C24;
+      position:absolute;
+      top: 17px;
+      left: 92px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    网站首页
+  </div>
+
+  <div class="pad"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box button{
+      background-image: linear-gradient(#FAA500,#F47D00);
+      color: #FEF4E9;
+      border: 2px solid #DA7D00;
+      width: 134px;
+      height: 40px;
+      margin: 20px 20px;
+      border-radius: 6px;
+      text-shadow: 0px 1px 1px #D67801;
+    }
+    #ie{
+      border-radius: 0;
+      font-weight: 0;
+    }
+    #noncss{
+      background-image:linear-gradient(#F78F00,#F78F00);
+    }
+    #hover:hover{
+      background-image: linear-gradient(#F88C11,#F16315);
+      cursor: pointer;
+    }
+    #active:active{
+      background-image: linear-gradient(#F47B1F,#FAA21B);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p class="box">
+    <button>Orange</button>
+    <button id="ie">Orange</button>
+    <button id="noncss">Orange</button>
+    <br>
+    <button>Orange</button>
+    <button id="hover">Orange</button>
+    <button id="active">Orange</button>
+  </p>
+
+</body>
+
+</html>
