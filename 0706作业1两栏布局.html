@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      overflow: hidden;
+    }
+    div{
+      display: inline-block;
+      font-size: 0;
+      color: red;
+    }
+    .box{
+      width: 100vw;
+      height: 100vh;
+      
+    }
+    .aside{
+      height: 100%;
+      /* 方法一：使用 calc() 函数设置 main 的宽度*/
+      width: 200px;
+      background-color: #dee;
+      font-size: 20px;
+
+    }
+    .main{
+      height:100%;
+      width: calc(100% - 200px) ;
+      background-color: #309;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="aside"> aside </div>
+    <div class="main"> main </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0 ;
+    }
+    .box{
+      /* height: 100vh; */
+      width: 1260px;
+      margin: 0 auto;
+      
+    }
+    .box div{
+      float: left;
+      height: 300px;
+      width: 400px;
+      background-color: #7FFFD4;
+      margin: 10px;
+    }
+    .box::after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+    h2{
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h2>缩略图布局</h2>
+    <div>图片1</div>
+    <div>图片2</div>
+    <div>图片3</div>
+    <div>图片4</div>
+    <div>图片5</div>
+    <div>图片6</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    div {
+      color: red;
+      font-size: 0;
+    }
+
+    .box {
+      width: 100vw;
+      height: 100vh;
+
+      /* 方法三：使用弹性布局； */
+      display: flex;
+    }
+
+    .aside {
+      height: 100%;
+      width: 200px;
+      background-color: #dee;
+      font-size: 20px;
+    }
+
+    .main {
+      height: 100%;
+      width: 100%;
+      background-color: #309;
+      font-size: 20px;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="aside"> aside </div>
+    <div class="main"> main </div>
+  </div>
+
+</body>
+
+</html>

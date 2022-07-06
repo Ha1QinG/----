@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    div {
+      display: inline-block;
+      font-size: 0;
+      color: red;
+    }
+
+    .box {
+      width: 100vw;
+      height: 100vh;
+
+    }
+
+    .main {
+      height: 100%;
+      width: 100%;
+      background-color: #309;
+      font-size: 20px;
+      float: right;
+
+      box-sizing: border-box;
+      padding-left: 200px;
+    }
+
+    .aside {
+      height: 100%;
+      width: 200px;
+      background-color: #dee;
+      font-size: 20px;
+      
+      /*
+      方法二：先设置 main 的样式，将 aside 浮动到左侧
+      用margin将aside移至左侧，设置main的padding，使文字正常显示；
+      */
+      float: left;
+      margin-right: -100%;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="main"> main </div>
+    <div class="aside"> aside </div>
+  </div>
+
+</body>
+
+</html>

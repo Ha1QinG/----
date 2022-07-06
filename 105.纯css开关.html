@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  body{
+    margin: 60px;
+  }
+  .gx-switch{
+    display: inline-block;
+    width: 70px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: #E0E0E0;
+  }
+  .gx-switch input{
+    display: none;
+  }
+  .gx-switch b{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    background-color: #E0E0E0;
+    /* vertical-align: middle; */
+    margin-right: 10px;
+  }
+  .gx-switch b::after{
+    display: inline-block;
+    content: "";
+    width: 36px;
+    height: 100%;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+  }
+  .gx-switch :checked + b{
+    background-color: #4CD860;
+    text-align: right;
+  }
+  </style>
+</head>
+<body>
+
+<label class="gx-switch" for="ipt">
+  <input type="checkbox" checked name="ipt">
+  <b></b>
+</label> 是否审核
+
+</body>
+</html>

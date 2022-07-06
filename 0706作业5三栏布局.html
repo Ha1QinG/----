@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      font-size: 0;
+    }
+
+    div {
+      color: red;
+      font-size: 20px;
+    }
+
+    .box {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+
+    .aside {
+      height: 100%;
+      width: 200px;
+      background-color: #dee;
+    }
+
+    .main {
+      height: 100%;
+      width: calc(100% - 400px);
+      background-color: #309;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="aside"> aside </div>
+    <div class="main"> main </div>
+    <div class="aside"> aside </div>
+  </div>
+
+</body>
+
+</html>
