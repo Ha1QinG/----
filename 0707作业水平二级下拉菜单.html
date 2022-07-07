@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .body{
+      background-color: #B0795D;
+      height: 100vh;
+      width: 100vw;
+    }
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+    .mune{
+      list-style-type: none;
+      padding: 0;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      height: 50px;
+    }
+    .mune li{
+      display: inline-block;
+      padding: 10px 20px;
+      height: 30px;
+      line-height: 30px;
+    }
+    .mune1,.mune2{
+      position: relative;
+    }
+    .mune1-son ,.mune2-son{
+      position: absolute;
+      width: 150px;
+      padding: 0;
+      /* background-color: #d00; */
+      display: none;
+      top: 50px;
+      left: 0;
+    }
+    .mune1-son li ,.mune2-son li{
+      text-align: center;
+      width: 60px;
+      height: 20px;
+      line-height: 20px;
+    }
+    .mune1::after,.mune2::after{
+      content: "▼";
+    }
+    .mune1:hover::after,.mune2:hover::after{
+      content: "▲";
+    }
+    .mune1:hover,.mune2:hover{
+      background-color: #EBEBEB;
+    }
+    .mune1:hover .mune1-son,.mune2:hover .mune2-son{
+      display: block;
+      background-color: #EBEBEB;
+    }
+  </style>
+</head>
+<body>
+  <div class="body">
+    <ul class="mune">
+      <a href="#"><li>首页</li></a>
+      <a href="#">
+        <li class="mune1">关于我们
+          <ul class="mune1-son">
+            <li>子菜单1</li>
+            <li>子菜单2</li>
+            <li>子菜单3</li>
+          </ul>
+      </li></a>
+        
+      <a href="#">
+        <li class="mune2">产品中心
+        <ul class="mune2-son">
+          <li>子菜单1</li>
+          <li>子菜单2</li>
+          <li>子菜单3</li>
+        </ul>
+      </li></a>
+      <a href="#"><li>联系我们</li></a>
+    </ul>
+    
+  </div>
+</body>
+</html>

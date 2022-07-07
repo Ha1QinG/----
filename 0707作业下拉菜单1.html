@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+    }
+    body{
+      margin: 20px 50px;
+    }
+    .box{
+      display: inline-block;
+      text-align: center;
+      width: 100px;
+      background-color:#CCCCCC;
+      position: relative;
+    }
+    .box:hover p::after{
+      content: "▲";
+    }
+    .box:hover .down{
+      display: block;
+    }
+    .box:hover p{
+      background-color: #aaa;
+    }
+    .down li:hover{
+      background-color: #aaa;
+    }
+    .box p{
+      display: block;
+      height: 40px;
+      line-height: 40px;
+    }
+    .box p::after{
+      content: "▼";
+      padding: 5px;
+    }
+    .down{
+      list-style-type: none;
+      padding: 0;
+      background-color: #CCCCCC;
+      display: none;
+      position: absolute;
+      width: 100%;
+    }
+    .down li{
+      line-height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p>选择学历</p>
+    <ul class="down">
+      <li>本科</li>
+      <li>大专</li>
+      <li>高中</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <p>选择学历</p>
+    <ul class="down">
+      <li>本科</li>
+      <li>大专</li>
+      <li>高中</li>
+    </ul>
+  </div>
+</body>
+</html>

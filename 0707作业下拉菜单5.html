@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+    }
+    body{
+      margin: 20px 50px;
+    }
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+    .box{
+      display: inline-block;
+
+      text-align: center;
+      width: 100px;
+      background-color:#CCCCCC;
+      position: relative;
+    }
+    .box:hover p::after{
+      content: "▲";
+    }
+    .box:hover .down{
+      display: block;
+    }
+    /* .box:hover p{
+      background-color: #aaa;
+    } */
+    .down li:hover{
+      background-color: #aaa;
+    }
+    .box p{
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      border: 1px solid red;
+    }
+    .box p::after{
+      content: "▼";
+      padding: 5px;
+    }
+    .box:hover p::before{
+      content: "";
+      position: absolute;
+      left: 1px;
+      bottom: -1px;
+      z-index: 99;
+      width: 98px;
+      height: 2px;
+      background-color: #CCCCCC;
+    }
+    .down{
+      list-style-type: none;
+      padding: 0;
+      background-color: #CCCCCC;
+      display: none;
+      position: absolute;
+      width: 220px;
+      height: 80px;
+      padding:  0 20px;
+      text-align: left;
+      border: 1px solid red;
+    }
+    .down li{
+      line-height: 40px;
+      width: 50px;
+      height: 40px;
+      text-align: center;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p>选择学历</p>
+    <ul class="down">
+      <a href="#"><li>本科</li></a>
+      <a href="#"><li>大专</li></a>
+      <a href="#"><li>高中</li></a>
+      <a href="#"><li>高中</li></a>
+      <a href="#"><li>高中</li></a>
+      <a href="#"><li>高中</li></a>
+    </ul>
+  </div>
+  <div class="box">
+    <p>选择学历</p>
+    <ul class="down">
+      <li>本科</li>
+      <li>大专</li>
+      <li>高中</li>
+    </ul>
+  </div>
+</body>
+</html>
