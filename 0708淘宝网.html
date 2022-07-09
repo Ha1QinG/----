@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 页面初始化 */
+    body {
+      margin: 0;
+      font-size: 12px;
+      color: #6c6c6c;
+    }
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+    a:hover{
+      color: #FF4400;
+    }
+
+    /* 导航栏 */
+    .nav {
+      height: 90px;
+    }
+
+    .inner {
+      width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .logo{
+      float: left;
+      padding-top: 22px;
+    }
+
+    .inner>span {
+      border: 1px solid #FFB4A8;
+      width: 900px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      background-color: #fef2f2;
+      display: inline-block;
+      margin: 22px 0 14px 95px;
+    }
+    .advice{
+      text-align: right;
+      margin: 0;
+    }
+    /* 主体部分 */
+    .main{
+      min-width: 1200px;
+      height: 600px;
+      background: url(../素材/banner.jpg) no-repeat center;
+    }
+    .main .login{
+      width: 300px;
+      background: #fff;
+      float: right;
+      margin-right: 160px;
+      margin-top: 120px;
+      padding: 20px 25px 0 25px;
+    }
+    .login h4{
+      font-size: 16px;
+      color: #3c3c3c;
+      margin-bottom: 30px;
+    }
+    .login input{
+      width: 300px;
+      height: 42px;
+      outline: none;
+      box-sizing: border-box;
+      padding-left: 48px;
+      color: #999999;
+      font-size: 14px;
+      border: 1px solid #dddddd;
+      margin-bottom: 20px;
+    }
+    .login input[type="text"]{
+      background: url(../素材/user_icon.png) no-repeat 0 0/contain;
+    }
+    .login input[type="password"]{
+      background: url(../素材/pass_icon.png) no-repeat 0 0/contain;
+    }
+    .login button{
+      width: 300px;
+      height: 42px;
+      margin-bottom: 24px;
+      border: none;
+      background-color: #FF4400;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .login button:hover{
+      background-color: #F52B00;
+      box-shadow: 1px 1px 1px #eee;
+    }
+    .other-login{
+      margin-bottom: 32px;
+    }
+    .other-login span{
+      vertical-align: top;
+      margin-right: 32px;
+    }
+    .help{
+      margin-bottom: 27px;
+      text-align: right;
+    }
+    .help a{
+      margin-left: 12px;
+    }
+    /* footer部分 */
+    .footer div{
+      width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .coop{
+      margin-top: 60px;
+      line-height: 42px;
+      border-top: 1px solid #dddddd;
+      border-bottom: 1px solid #dddddd;
+    }
+    .coop a::after{
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 10px;
+      background-color: #ddd;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+    .about{
+      line-height: 42px;
+    }
+    .about a{
+      padding-right: 10px;
+    }
+    .copr{
+      color: #9c9c9c;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .copr>a>img{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="taobao">
+    <div class="nav">
+      <div class="inner">
+        <div class="logo">
+          <a href="#"><img src="../素材/logo.png" alt=""></a>
+        </div>
+        <span>为确保您账户的安全及正常使用，依《网络安全法》相关要求，6月1日起会员账户需绑定手机。如您还未绑定，请尽快完成，感谢您的理解及支持！</span>
+        <p class="advice">
+          <a href="">
+            <img src="../素材/icon1 (1).png" alt="" style="vertical-align: middle;">
+            "登录页面"改进建议
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="login">
+        <h4>密码登录</h4>
+        <input type="text" placeholder="会员号/邮箱/手机号">
+        <input type="password" placeholder="请输入密码">
+        <button>登 录</button>
+        <div class="other-login">
+          <a href="#">
+            <img src="../素材/icon2.png" alt="">
+            <span>微博登录</span>
+          </a>
+          <a href="#">
+            <img src="../素材/icon3.png" alt="">
+            <span>支付宝登录</span>
+          </a>
+        </div>
+        <div class="help">
+          <a href="#">忘记密码</a>
+          <a href="#">忘记会员号</a>
+          <a href="#">免费注册</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="coop">
+        <a href="#">阿里巴巴集团</a>
+        <a href="#">阿里巴巴国际站</a>
+        <a href="#">阿里巴巴中国站</a>
+        <a href="#">全球速卖通</a>
+        <a href="#">淘宝网</a>
+        <a href="#">天猫</a>
+        <a href="#">聚划算</a>
+        <a href="#">一淘</a>
+        <a href="#">阿里妈妈</a>
+        <a href="#">飞猪</a>
+        <a href="#">虾米</a>
+        <a href="#">阿里云计算</a>
+        <a href="#">云OS</a>
+        <a href="#">万网</a>
+        <a href="#">支付宝</a>
+        <a href="#">来往</a>
+      </div>
+      <div class="about">
+        <a href="#">关于淘宝</a>
+        <a href="#">合作伙伴</a>
+        <a href="#">营销中心</a>
+        <a href="#">廉正举报</a>
+        <a href="#">联系客服</a>
+        <a href="#">开发平台</a>
+        <a href="#">诚征英才</a>
+        <a href="#">联系我们</a>
+        <a href="#">网站地图</a>
+        <a href="#">法律声明及隐私权政策</a>
+      </div>
+      <div class="copr">
+        <span>&copy;2018&nbsp;Taobao.com版权所有</span>
+        <span>网络文化经营许可证：浙网文 [2016]0132-032 号 | 增值电信业务经营许可证：浙B2-20080224-1 | 信息网络传播视听节目许可证：1109364号</span>
+        <a href="#"><img src="../素材/wj.gif" alt=""></a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
