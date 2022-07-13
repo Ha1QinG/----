@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: #EAEAEA;
+    }
+    ul{
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    .box{
+      width: 600px;
+      height: 50px;
+      margin: 20px auto;
+      background-color: #fff;
+    }
+    .mune{
+      display:inline-block;
+      width: 150px;
+      line-height: 50px;
+      padding: 0 50px;
+      text-align: center;
+      position: relative;
+      background-color: #8FCB8E;
+      cursor: pointer;
+    }
+    .hidden{
+      position: absolute;
+      top: 0;
+      left: 0px;
+      margin-top: 70px;
+      width: 250px;
+      background-color: #8FCB8E;
+      opacity: 0;
+      transform: scale(.5);
+      transition: all .5s ;
+    }
+    .hidden::before{
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border: 15px solid transparent;
+      border-bottom: 15px solid #8FCB8E;
+      position: absolute;
+      top: -30px;
+      left: 20px;
+    }
+    .mune:hover .hidden{
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span class="mune">
+      Services +
+      <ul class="hidden">
+        <li>Web Design</li>
+        <li>Hosting</li>
+        <li>Design</li>
+        <li>Consulting</li>
+      </ul>
+    </span>
+  </div>
+
+</body>
+</html>

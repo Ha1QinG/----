@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 80px;
+      background-color: #eee;
+    }
+    i{
+      font-style: normal;
+    }
+    ul{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+      display: inline-block;
+    }
+    .mune{
+      width: 500px;
+      height: 50px;
+      background-color: #34495E;
+      text-align: center;
+      transform: skewX(20deg);
+      color: white;
+    }
+    .mune span{
+      display: inline-block;
+      margin: 0 5px;
+      line-height: 50px;
+      width: 80px;
+    }
+    .mune span i{
+      display: inline-block;
+      transform: skewX(-20deg);
+    }
+    .mune span:hover{
+      background-color: #E74C3C;
+    }
+    .mune span:nth-child(2){
+      position: relative;
+    }
+    .mune .hidden{
+      display: none;
+      line-height: 50px;
+      position: absolute;
+      background-color: #E74C3C;
+      left: 1px;
+    }
+    .mune .hidden li{
+      width: 80px;
+    }
+    .mune span:nth-child(2):hover ul{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="mune">
+    <span><i>网站首页</i></span>
+    <span><i>
+      关于我们
+      <ul class="hidden">
+        <li>成长旅程</li>
+        <li>公司前景</li>
+        <li>未来发展</li>
+      </ul>
+    </i></span>
+    <span><i>产品中心</i></span>
+    <span><i>成功案例</i></span>
+    <span><i>客户留言</i></span>
+  </div>
+
+</body>
+</html>
