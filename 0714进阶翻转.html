@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .trans{
+      margin: 30px;
+      transform-style: preserve-3d;
+      perspective: 1600px;
+      font-size: 30px;
+    }
+    .box {
+      width: 200px;
+      height: 260px;
+      background-color: #9B9B9B;
+      margin: 10px 20px;
+      text-align: center;
+      display: inline-block;
+      opacity: 0;
+      animation: roll 1s linear 1s 1  forwards;
+    }
+    .roll2{
+      animation: roll 1s linear 1.5s 1  forwards;
+    }
+    .roll3{
+      animation: roll 1s linear 2s 1  forwards;
+    }
+    @keyframes roll {
+      0%{
+        transform: rotateY(90deg);
+        opacity: .2;
+      }
+      60%{
+        opacity: 1;
+        transform: rotateY(0deg);
+      }
+      100%{
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="trans">
+    <div class="box roll1">1</div>
+    <div class="box roll2">2</div>
+    <div class="box roll3">3</div>
+  </div>
+</body>
+
+</html>
