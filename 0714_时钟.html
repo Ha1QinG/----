@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      height: 300px;
+      width: 300px;
+      background-color: #DC143C;
+      margin: 50px;
+      overflow: hidden;
+      position: relative;
+    }
+    .box .dial{
+      width: 200px;
+      height: 200px;
+      margin: auto;
+      margin-top: 50px;
+      background-color: #DC143C;
+      background:radial-gradient( circle, white 6%,#DC143C 6%);
+      border-radius: 50%;
+      border: 5px solid white;
+    }
+    .hour{
+      width: 8px;
+      height: 60px;
+      background-color: #fff;
+      position: absolute;
+      top: 51%;
+      left: 48.5%;
+      transform-origin: top center;
+      animation: move1 12s linear  infinite  forwards;
+    }
+    .minute{
+      width: 6px;
+      height: 90px;
+      background-color: #fff;
+      position: absolute;
+      top: 51%;
+      left: 49%;
+      transform-origin: top center;
+      animation: move1 6s linear  infinite  forwards;
+    }
+    @keyframes move1 {
+      100%{
+        transform: rotateZ(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="dial"></div>
+    <div class="hour"></div>
+    <div class="minute"></div>
+  </div>
+</body>
+</html>

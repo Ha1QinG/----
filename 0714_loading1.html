@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .bg{
+      width: 500px;
+      height: 200px;
+      background-color: #CF8805;
+      overflow: hidden;
+      margin: 80px;
+      position: relative;
+    }
+    .loading{
+      width: 300px;
+      height: 40px;
+      background-color: #DDAC50;
+      margin: auto;
+      margin-top: 60px;
+    }
+    .white{
+      width: 0;
+      height: 40px;
+      background-color: #ffffff;
+      margin: auto;
+      position: absolute;
+      animation: load 5s linear infinite forwards;
+    }
+    @keyframes load {
+      100%{
+        width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg">
+    <div class="loading">
+      <div class="white"></div>
+    </div>
+  </div>
+
+</body>
+</html>

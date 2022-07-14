@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 500px;
+      height: 500px;
+      background-color: #CF8805;
+      overflow: hidden;
+      margin: 80px;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    .change{
+      width: 200px;
+      height: 200px;
+      background-color: #ffffff;
+      overflow: hidden;
+      margin: auto;
+      margin-top: 150px;
+    }
+    .box:hover .change{
+      animation: turn 2s linear  infinite  forwards;
+    }
+    @keyframes turn {
+      50%{
+        transform: rotate3d(1,0,0,180deg)
+      }
+      100%{
+        transform: rotate3d(0,0,1,180deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="change"></div>
+  </div>
+
+</body>
+</html>
