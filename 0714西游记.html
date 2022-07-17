@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>西游记</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .bg{
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      background: url(../作业/css3逐帧动画西游记/bg.jpg) 0 0 / cover;
+      position: relative;
+      animation: run3 4s steps(10,end) reverse infinite forwards;
+    }
+    .man{
+      display: inline-block;
+      width: 180px;
+      height: 400px;
+      background-color: #f99;
+      margin: 20px;
+      position: absolute;
+      top: 50%;
+      animation-name: run;
+    }
+    .sun{
+      left: 20%;
+      background: url(../作业/css3逐帧动画西游记/猴子.png) 0 100% no-repeat;
+      animation: run1 2s steps(1,end) infinite forwards;
+
+    }
+    .zhu{
+      left: 40%;
+      background: url(../作业/css3逐帧动画西游记/猪八戒.png) 0 100% no-repeat;
+      animation: run1 2s steps(1,end) infinite forwards;
+    }
+    .tang{
+      left: 60%;
+      background: url(../作业/css3逐帧动画西游记/唐僧.png) 0 100% no-repeat;
+      animation: run2 2s steps(1,end) infinite forwards;
+    }
+    .sha{
+      left: 80%;
+      background: url(../作业/css3逐帧动画西游记/沙和尚.png) 0 100% no-repeat;
+      animation: run3 2s steps(1,end) infinite forwards;
+    }
+    @keyframes run1 {
+      0%{
+        background-position: 0 0;
+      }
+      12.5%{
+        background-position: -200px 0;
+      }
+      25%{
+        background-position: -400px 0;
+      }
+      37.5%{
+        background-position: -600px 0;
+      }
+      50%{
+        background-position: -800px 0;
+      }
+      62.5%{
+        background-position: -1000px 0;
+      }
+      75%{
+        background-position: -1200PX 0;
+      }
+      87.5%{
+        background-position: -1400PX 0;
+      }
+      100%{
+        background-position: -1600px 0;
+      }
+    }
+    @keyframes run2 {
+      0%{
+        background-position: 0 0;
+      }
+      12.5%{
+        background-position: -170px 0;
+      }
+      25%{
+        background-position: -340px 0;
+      }
+      37.5%{
+        background-position: -510px 0;
+      }
+      50%{
+        background-position: -680px 0;
+      }
+      62.5%{
+        background-position: -850px 0;
+      }
+      75%{
+        background-position: -1020PX 0;
+      }
+      87.5%{
+        background-position: -1190PX 0;
+      }
+      100%{
+        background-position: -1360px 0;
+      }
+    }
+    @keyframes run3 {
+      0%{
+        background-position: 0 0;
+      }
+      12.5%{
+        background-position: -210px 0;
+      }
+      25%{
+        background-position: -420px 0;
+      }
+      37.5%{
+        background-position: -630px 0;
+      }
+      50%{
+        background-position: -840px 0;
+      }
+      62.5%{
+        background-position: -1050px 0;
+      }
+      75%{
+        background-position: -1260PX 0;
+      }
+      87.5%{
+        background-position: -1470PX 0;
+      }
+      100%{
+        background-position: -1680px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg">
+    <div class="man sun"></div>
+    <div class="man zhu"></div>
+    <div class="man tang"></div>
+    <div class="man sha"></div>
+  </div>
+</body>
+</html>
