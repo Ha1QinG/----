@@ -12,14 +12,14 @@
   <script>
 
 
-    var userpsd = prompt("请输入密码：");
-    var money = 201;
+    // var userpsd = prompt("请输入密码：");
+    var money = 20321;
     var psd = '123';
-    for (var i = 1; i < 3; i++) {
+    for (let i = 1; i < 4; i++) {
+      var userpsd = prompt("请输入密码：");
       if (userpsd != psd) {
         //密码错误
         alert('密码错误，您还有' + (3 - i) + '次机会。');
-        userpsd = prompt("请输入密码：");
       }
       else {
         //密码正确
@@ -41,13 +41,15 @@
           alert('取款成功！');
           money -= need;
         }
-        alert('您的余额是：'+money);
+        alert('您的余额是：' + money);
         break;
       }
-    }
-    if (i == 3) {
-      //密码出错3次
-      alert("对不起，您的账户被冻结！");
+      if (i == 3) {
+        //密码出错3次
+        console.log(i);
+
+        alert("对不起，您的账户被冻结！");
+      }
     }
 
   </script>
