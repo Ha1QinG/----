@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    #box1{
+    #box1 {
       width: 200px;
       height: 200px;
       vertical-align: middle;
       background-color: red;
       cursor: pointer;
     }
-    #box2{
+
+    #box2 {
       display: inline-block;
       width: 100px;
       height: 100px;
       background-color: #fff;
     }
-    
   </style>
 </head>
+
 <body>
   <div id="box1">
     <div id="box2">
@@ -31,6 +33,47 @@
 
   <input type="text">
   <button>1</button>
-  
+
+
+
+  <script>
+
+    var a = 2;
+    var b = 1;
+    var c = 5;
+
+    //一个比较多个
+    if(a > b && a > c){
+      console.log(a);
+    }else if( b > a && b > c){
+      console.log(b);
+    }else if( c > a && c > b){
+      console.log(c);
+    }
+
+
+    //两个先比较，再比较另一个
+    if(a > b){
+      if(a > c){
+        console.log(a);
+      }
+      else{
+        console.log(c);
+      }
+    }else if( b > c){
+      console.log(b);      
+    }else{
+      console.log(c);      
+    }
+
+
+
+  </script>
+
+
+
+
+
 </body>
+
 </html>
