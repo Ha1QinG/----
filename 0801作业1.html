@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+
+  <script>
+    // 1-100 顺序输出
+    for (let i = 1; i <= 100; i++) {
+      console.log(i);
+    }
+
+    console.log('----');
+
+    // 1-100 倒序输出
+    for (let i = 100; i >= 1; i--) {
+      console.log(i);
+    }
+
+    console.log('----');
+
+    // 1-100 的偶数
+    for (let i = 1; i <= 100; i++) {
+      if (i % 2 == 0) console.log(i);
+    }
+
+    console.log('----');
+
+    // 1-100 的素数
+    for (let i = 2; i <= 100; i++) {
+      var prime = true;
+      for (let j = 2; j < i; j++) {
+        if (i % j == 0) {
+          prime = false;
+          break;
+        }
+      }
+      if (prime) {
+        console.log(i);
+      }
+    }
+
+    console.log('----');
+
+    //99乘法表
+    for(let i = 1; i <= 9; i++  ){
+      for(let j = 1; j<= i; j++ ){
+        document.write(i+'*'+j+'='+i*j+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+      }
+      document.write('<br>');
+    }
+
+
+    console.log('----');
+    document.write('<br>');
+    document.write('<br>');
+
+
+    //倒的99乘法表
+    for(let i = 9; i >= 1; i--  ){
+      for(let j = 1; j<= i; j++ ){
+        document.write(i+'*'+j+'='+i*j+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+      }
+      document.write('<br>');
+    }
+
+
+
+
+  </script>
+
+
+
+</body>
+
+</html>
