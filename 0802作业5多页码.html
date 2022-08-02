@@ -27,37 +27,36 @@
 
     showPages(2, 17);
     document.getElementById(box);
+    
+      function showPages(page, pageCount) {
+        var btns = document.querySelectorAll('button');
+        var temp = "";
 
-    function showPages(page, pageCount) {
-      var btns = document.querySelectorAll('button');
-      var temp = "";
-
-      if (page < 5) {
-        for (let i = 1; i < 6; i++) {
-          temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
-        }
-        temp += '<button onclick = "showPages(' + (page + 1) + ',' + pageCount + ')"' + (page == pageCount ? 'disabled' : '') + '> &gt; </button>';
-
-      } else {
-        temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> 1 </button>';
-        temp += '<button onclick = "showPages(' + (page - 1) + ',' + pageCount + ')"' + (page == 1 ? 'disabled' : '') + '> &lt; </button>';
-        for (var i = 2; i <= pageCount - 1; i++) {
-          if (i > (page - 4) && i < (page + 4)) {
+        if (page < 5) {
+          for (let i = 1; i < 6; i++) {
             temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
           }
+        } else {
+          temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> 1 </button>';
+          temp += '<button onclick = "showPages(' + (page - 1) + ',' + pageCount + ')"' + (page == 1 ? 'disabled' : '') + '> &lt; </button>';
+          for (var i = 2; i <= pageCount - 4; i++) {
+            if (i > (page - 4) && i < (page + 4)) {
+              temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
+            }
+          }
         }
-        //添加右括号
-        temp += '<button onclick = "showPages(' + (page + 1) + ',' + pageCount + ')"' + (page == pageCount ? 'disabled' : '') + '> &gt; </button>';
-      }
-      if (page > (pageCount - 5)) {
-        for (let i = (pageCount - 5); i < pageCount; i++) {
-          temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
+        if (page < (pageCount - 4)) {
+          temp += '<button onclick = "showPages(' + (page + 1) + ',' + pageCount + ')"' + (page == pageCount ? 'disabled' : '') + '> &gt; </button>';
+          temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + pageCount + ' </button>';
         }
-        temp += '<button onclick = "showPages(' + (page + 1) + ',' + pageCount + ')"' + (page == pageCount ? 'disabled' : '') + '> &gt; </button>';
+        else {
+          for (let i = (pageCount - 3); i <= pageCount; i++) {
+            temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
+          }
 
+        }
+        box.innerHTML = temp;
       }
-      box.innerHTML = temp;
-    }
 
 
 
