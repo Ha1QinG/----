@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      box-sizing: border-box;
+      background-color: #fff;
+      border: 1px solid #cccccc;
+      /* outline: none; */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+
+  </div>
+
+  <script>
+
+    showPages(2, 17);
+    document.getElementById(box);
+
+    function showPages(page, pageCount) {
+      var btns = document.querySelectorAll('button');
+      var temp = "";
+
+      if (page < 5) {
+        for (let i = 1; i < 6; i++) {
+          temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
+        }
+        temp += '<button onclick = "showPages(' + (page + 1) + ',' + pageCount + ')"' + (page == pageCount ? 'disabled' : '') + '> &gt; </button>';
+
+      } else {
+        temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> 1 </button>';
+        temp += '<button onclick = "showPages(' + (page - 1) + ',' + pageCount + ')"' + (page == 1 ? 'disabled' : '') + '> &lt; </button>';
+        for (var i = 2; i <= pageCount - 1; i++) {
+          if (i > (page - 4) && i < (page + 4)) {
+            temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
+          }
+        }
+        //添加右括号
+        temp += '<button onclick = "showPages(' + (page + 1) + ',' + pageCount + ')"' + (page == pageCount ? 'disabled' : '') + '> &gt; </button>';
+      }
+      if (page > (pageCount - 5)) {
+        for (let i = (pageCount - 5); i < pageCount; i++) {
+          temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
+        }
+        temp += '<button onclick = "showPages(' + (page + 1) + ',' + pageCount + ')"' + (page == pageCount ? 'disabled' : '') + '> &gt; </button>';
+
+      }
+      box.innerHTML = temp;
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>

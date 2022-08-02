@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    var str = '348179';
+    var max = str[0];
+    var max2 = str[0];
+    for (let i = 0; i <= str.length - 1; i++) {
+      if (max < str[i]) {
+        max = str[i];
+      }
+      for (let i = 0; i <= str.length - 1; i++) {
+      if (max > max2 && max < str[i]) {
+        max2 = str[i];
+      }
+    }
+    }
+    console.log(max);
+    console.log(max2);
+
+
+
+  </script>
+
+</body>
+
+</html>

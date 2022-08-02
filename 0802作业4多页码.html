@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button{
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      box-sizing: border-box;
+      background-color: #fff;
+      border: 1px solid #cccccc;
+      /* outline: none; */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+
+  </div>
+
+  <script>
+
+    showPages(2, 47);
+    document.getElementById(box);
+
+    function showPages(page, pageCount) {
+      var btns = document.querySelectorAll('button');
+      var temp = "";
+      if (page != 1) {
+        //添加第一页
+        temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> 1 </button>';
+      }else{
+        
+      }
+      //添加左括号
+      temp += '<button onclick = "showPages(' + (page - 1) + ',' + pageCount + ')"' + (page == 1 ? 'disabled' : '') + '> &lt; </button>';
+
+      for (var i = 2; i <= pageCount - 1; i++) {
+        if (i > (page - 4) && i < (page + 4)) {
+          temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
+        }
+      }
+      //添加右括号
+      temp += '<button onclick = "showPages(' + (page + 1) + ',' + pageCount + ')"' + (page == pageCount ? 'disabled' : '') + '> &gt; </button>';
+      if (page != pageCount) {
+        //添加最后一页
+        temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + pageCount + ' </button>';
+      }
+      box.innerHTML = temp;
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>

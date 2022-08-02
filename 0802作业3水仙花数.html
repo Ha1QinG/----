@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var numb = prompt('请输入数字：');
+    var numb1 = numb % 10;  //个位数 a
+    var numb2 = (numb / 10) % 10; //十位数 b 
+    var numb3 = numb / 100 ;  //百位数 c
+    a = parseInt(numb1);
+    b = parseInt(numb2);
+    c = parseInt(numb3);
+    if(numb == a*a*a + b*b*b + c*c*c){
+      alert(numb + '是水仙花数');
+    }else{
+      alert(numb + '不是水仙花数');
+    }
+
+
+
+
+
+  </script>
+
+</body>
+</html>
