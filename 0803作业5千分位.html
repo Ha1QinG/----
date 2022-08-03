@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    //数组方法 未完成
+    var price = '23467890083';
+    var numb = [];
+    for (var i = 0; i < price.length; i++) {
+      numb[i] = price[i];
+    }
+    numb.reverse();
+    console.log(numb);
+
+
+    for (var i = 1; i < numb.length; i++) {
+      if (i % 3 == 0) {
+        var str = new String();
+        str += numb.slice((i - 3), i) + ',';
+        // var pri = '';
+        // pri += numb.slice((i - 3), i) + ',';
+        // console.log(pri );
+      }
+      // str += numb;
+      console.log(str);
+    }
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

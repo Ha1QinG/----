@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    var obj = {
+      name: 'xlk',
+      age: 20,
+      sex: 'man',
+    };
+
+    //循环遍历对象
+    for (var key in obj) {
+      console.log(key, obj[key]);
+    }
+    //读取
+    console.log(obj.age);
+    console.log(obj['name']);
+    //修改
+    obj.age = 18;
+    obj['name'] = 'hhhh';
+    //删除
+    console.log(delete obj['sex']);
+    //判断属性是否存在
+    var temp = 'name';
+    for (var key in obj) {
+      if (key == temp) {
+        console.log('存在');
+      }
+    }
+
+    var a = {};
+    var b= a;
+    b.x = 2;
+    console.log(a);
+    
+    console.log( 'valueOf' in {});
+    
+
+    Object.prototype.xlk = '3423';
+    var person = {
+      name : 'xlk'
+    }
+    for(var key in person){
+    if( person.hasOwnProperty){
+      console.log(key);
+    }
+    }
+
+  </script>
+
+</body>
+
+</html>

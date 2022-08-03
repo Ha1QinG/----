@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    //对象方法
+    var price = '235467890083';
+    var obj = {};
+    var arr = {};
+    for (var i = price.length - 1; i >= 0; i--) {
+      obj[price.length - i] = price[i];
+    }
+    console.log(obj);
+    for (var k in obj) {
+      if (k % 3 == 0) {
+        obj[k] += ',';
+      }
+    }
+    for (var k in obj) {
+      document.write(obj[k]);
+    }
+    //翻转
+    // for (var i = k; i > 0; i--) {
+    //   for (var k in arr) {
+    //     arr[k] = obj[i];
+    //   }
+    // }
+    // console.log(arr);
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

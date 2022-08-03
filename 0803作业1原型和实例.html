@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // console.log(toString('NaN') == toString('NaN'));
+
+    //静态方法和实例方法的调用
+    var person = function(){};
+
+    //在function内声明一个say方法
+    person.say = function(){
+      console.log('hello');  
+    };
+
+    //给function的prototype添加一个age方法
+    person.prototype.age=function(age){
+      console.log(age);
+    }
+
+    person.say();
+    // person.age(12);   报错 不能直接调用其原型中的方法
+    
+    var tom = new person;
+    // tom.say();    报错  实例不能直接调用父类的方法
+    tom.age(12);
+
+
+
+    //全局方法
+    var Good =  function(){
+      console.log('1234');
+    };
+
+    //静态方法
+    Good.getAge = function(){
+      console.log('1234');
+    };
+    Good.getAge();  //可以调用
+
+    //实例方法
+    Good.prototype.age= function(age){
+      console.log(age);
+    };
+    Good.age(22); //报错，不能直接调用原型中的方法
+    var Nice = new Good;
+    Nice.age(20); //可以调用，实例调用原型方法
+
+
+
+  </script>
+
+</body>
+
+</html>

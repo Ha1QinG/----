@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+
+    //将字符串出现次数放在对象中
+    var str = '1414145121534231';
+    var result = {};
+    for (var i = 0; i < str.length; i++) {
+      var n = str[i];
+      if (n in result) {
+        result[n] += 1;
+      } else {
+        result[n] = 1;
+      }
+    }
+    console.log(result);
+
+    //遍历对象，找出属性值最大的属性名
+    var max = 0;
+    var maxKey = '';
+    var second = 0;
+    var secondKey = '';
+    for (var key in result) {
+      if (max < result[key]) {
+        second = max ;
+        secondKey = maxKey;
+        max = result[key];
+        maxKey = key;
+      }else if( second < max && second < result[key] ){
+        second = result[key];
+        secondKey = key;
+      }
+    }
+    console.log(maxKey, max);
+    console.log(secondKey, second);
+
+
+
+  </script>
+  
+</body>
+</html>
