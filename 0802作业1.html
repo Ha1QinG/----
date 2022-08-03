@@ -11,19 +11,32 @@
 
   <script>
 
-    var str = '348179';
+    var str = '3948179';
     var max = str[0];
-    var max2 = str[0];
-    for (let i = 0; i <= str.length - 1; i++) {
-      if (max < str[i]) {
-        max = str[i];
+    var max2 = str[1];
+    // for (let i = 0; i <= str.length - 1; i++) {
+    //   if (max < str[i]) {
+    //     max = str[i];
+    //   }
+    //   for (let i = 0; i <= str.length - 1; i++) {
+    //   if (max > max2 && max < str[i]) {
+    //     max2 = str[i];
+    //   }
+    // }
+    // }
+
+      //先去重；
+      for (var i = 1 ;i <str.length; i++){
+        if(max < str[i]){
+          max2 = max ;
+          max = str[i];
+        }
+        else if( max2 < max && max2 < str[i]){
+          max2 = str[i];
+        }
       }
-      for (let i = 0; i <= str.length - 1; i++) {
-      if (max > max2 && max < str[i]) {
-        max2 = str[i];
-      }
-    }
-    }
+
+
     console.log(max);
     console.log(max2);
 

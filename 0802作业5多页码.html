@@ -33,10 +33,12 @@
         var temp = "";
 
         if (page < 5) {
+          //页码小于5时
           for (let i = 1; i < 6; i++) {
             temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
           }
         } else {
+          //中间的页码
           temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> 1 </button>';
           temp += '<button onclick = "showPages(' + (page - 1) + ',' + pageCount + ')"' + (page == 1 ? 'disabled' : '') + '> &lt; </button>';
           for (var i = 2; i <= pageCount - 4; i++) {
@@ -49,6 +51,7 @@
           temp += '<button onclick = "showPages(' + (page + 1) + ',' + pageCount + ')"' + (page == pageCount ? 'disabled' : '') + '> &gt; </button>';
           temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + pageCount + ' </button>';
         }
+        //页码在最后一页时
         else {
           for (let i = (pageCount - 3); i <= pageCount; i++) {
             temp += '<button onclick = "showPages(' + i + ',' + pageCount + ')" style ="color:' + (i == page ? 'red' : '') + '"> ' + i + ' </button>';
