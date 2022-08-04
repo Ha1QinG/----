@@ -12,20 +12,26 @@
 
     //对象方法
     var price = '235467890083';
-    var obj = {};
-    var arr = {};
+    var obj = '';
+    var j = 0;
     for (var i = price.length - 1; i >= 0; i--) {
-      obj[price.length - i] = price[i];
+      // obj[price.length - i] = price[i];
+      j++;
+      obj = (j % 3 == 0 && j != price.length? ',':'')+price[i] + obj;
     }
     console.log(obj);
-    for (var k in obj) {
-      if (k % 3 == 0) {
-        obj[k] += ',';
-      }
-    }
-    for (var k in obj) {
-      document.write(obj[k]);
-    }
+    console.log((1879077).toLocaleString());
+    
+
+
+    // for (var k in obj) {
+    //   if (k % 3 == 0 && k != price.length ) {
+    //     obj[k] += ',';
+    //   }
+    // }
+    // for (var k in obj) {
+    //   document.write(obj[k]);
+    // }
     //翻转
     // for (var i = k; i > 0; i--) {
     //   for (var k in arr) {
