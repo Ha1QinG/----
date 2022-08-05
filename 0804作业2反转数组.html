@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // //不破坏原数组
+    // var arr = [1, 2, 3, 4, 5, 6, 7, 8];
+    // var newArr = [];
+
+    // for (var i = arr.length - 1; i >= 0; i--) {
+    //   var temp = arr[i];
+    //   newArr[newArr.length]=temp;
+    //   // newArr.push(temp);
+    // }
+
+    // console.log(newArr);
+
+
+    //破坏原数组
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8];
+    var str = '';
+    for (var i = arr.length - 1; i >= 0; i--) {
+      str += arr[i];
+    }
+    for( var k =0 ; k <str.length;k++){
+      arr[k]=str[k]
+    }
+    // arr.reverse();
+    console.log(arr);
+    console.log(arr.length);
+    
+    
+
+
+
+  </script>
+
+</body>
+
+</html>

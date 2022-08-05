@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // var arr = [8,12,9,1,2,23,32];
+    // var newArr = [];
+    // for( var k in arr){
+    //   if (arr[k] > 18){
+    //     newArr.push(arr[k]);
+    //   }
+    // }
+    // console.log(newArr);
+
+
+    //数组去重
+    var arr = ['a', 'a', 1, 2, 1, NaN, 5,'NaN','NaN', NaN, 'c', 'f'];
+    var obj = {};
+    var newArr = [];
+    for (var k = 0; k < arr.length; k++) {
+      let key = arr[k]; 
+      if (!obj[key]) {
+        newArr[newArr.length] = key;
+        // newArr.push(key);
+        obj[key] = 1;
+      }
+    }
+    console.log(newArr);
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>
