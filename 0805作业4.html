@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    var arr1 = ['a', 'b', 'c', 'd', 'e', 'f', 'h'];
+    var str = 'e';
+
+    var info = 0; //目标索引号
+    var left = 0; //左索引号
+    var right = arr1.length - 1; //右索引号
+
+
+    while (left <= right) {
+      var center = parseInt((left + right) / 2); //中间索引号
+
+      //中间等于目标
+      if (arr1[center] == str) {
+        info = center;
+        break;
+      }
+      else
+        //目标在前半段
+        if (str < arr1[center]) {
+          right = center - 1;
+        }
+        //目标在后半段
+        else {
+          left = center + 1;
+        }
+    }
+    console.log(info);
+
+
+
+  </script>
+
+</body>
+
+</html>

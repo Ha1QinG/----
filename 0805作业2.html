@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    //倒三角
+    var num = 5;
+    var height = num;
+    var star = 0;
+    var empty = 0;
+
+    for (var i = 1; i <= num; i++) {
+      console.log(star=height * 2 - 1);
+      empty = num - height;
+      for(var h =0 ;h <empty;h++){
+        document.write('&nbsp;');
+      }
+      for(var j =0; j<star ;j++){
+        document.write('*');
+      }
+      document.write('<br>')
+      height--;
+    }
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

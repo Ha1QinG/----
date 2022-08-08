@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    var arr1 = [1, 2, 3, 4];
+    var arr2 = ['a', 'b', 'c', 1, 2];
+    var newArr = arr1;
+    
+    for(var i in arr2){
+      newArr[newArr.length] = arr2[i];
+    }
+
+    //var newArr2 = arr1.concat(arr2);
+
+    console.log(newArr);
+
+
+  </script>
+
+</body>
+
+</html>

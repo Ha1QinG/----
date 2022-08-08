@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    table{
+      width: 100px;
+      height: 100px;
+      background-color: #434;
+    }
+    td{
+      width: 10px;
+      height: 10px;
+      background-color: #3dd;
+    }
+  </style>
+
+<body>
+  <script>
+
+    function table(x, y) {
+      var temp = '<table>';
+      for (var i = 0; i < x; i++) {
+        temp += '<tr>';
+        for (var j = 0; j < y; j++) {
+          temp += '<td></td>';
+        }
+        temp += '</tr>';
+      }
+      temp += '</table>';
+      return temp;
+    }
+
+    document.write(table(5,3));
+
+  </script>
+
+</body>
+
+</html>
