@@ -66,8 +66,11 @@
           newobj[k] = item;
         }
       }
+      return newobj;
     }
     deepCopy(j, obj);
+    console.log(deepCopy(j, obj));
+    
     console.log('j', j);
     j.id = 4;
     console.log('obj', obj);
