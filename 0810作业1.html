@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    //闭包例子
+    // function fn(){
+    //   var b = 3;
+    //   var add =  function(a){
+    //     sum = b + a;
+    //     console.log(sum);
+    //   }
+    //   return add(3);
+    // } 
+    // fn();
+
+
+    //递归函数例子
+    // function fn() {
+    //   if (1 == 1) {
+    //       console.log(1);
+    //       return fn();
+    //     }
+    // }
+    // fn();
+
+
+    // +function(){}();
+    // ~function(){}();
+    // -function(){}();
+    // (function(){})();
+    // (function(){}());
+    // !function(){}();
+
+
+    //递归实现10的阶乘
+    // function fn(n) {
+    //   var result = 1;
+    //   if (n == 1) {
+    //     return result;
+    //   } else return n * fn(n - 1);
+    // }
+    // console.log(fn(10));
+
+
+
+    //递归实现裴波那契数列
+    // function fn(n,m=1,sum=1){
+    //   if(n<=2){
+    //     return sum;
+    //   }else return fn(n-1,sum,m+sum);
+    // }
+    // console.log(fn(6));
+
+
+
+    //递归实现推平数组
+    // function fn(arr, newArr = []) {
+    //   for (var i = 0; i < arr.length; i++) {
+    //     if (Array.isArray(arr[i])) {
+    //       return fn(arr[i], newArr);
+    //     } else newArr.push(arr[i]);
+    //   }
+    //   return newArr;
+    // }
+
+    // var arr1 = [1, 2, 3, [4, 5, [6, 7,]]];
+    // console.log(fn(arr1));
+
+
+    //递归实现无限级树形导航
+
+    // var treeData = [
+    //   {
+    //     id: 1,
+    //     name: '江西省',
+    //     children: [
+    //       {
+    //         id: 3,
+    //         name: '南昌市',
+    //         children: [
+    //           { id: 5, name: '高新区' },
+    //           { id: 6, name: '西湖区' }
+    //         ]
+    //       },
+    //       {
+    //         id: 4,
+    //         name: '九江市',
+    //         children: [
+    //           { id: 7, name: '浔阳市' },
+    //           { id: 8, name: '柴桑区' }
+    //         ]
+    //       }
+    //     ]
+    //   },
+    //   { id: 2, name: '湖南省' }
+    // ];
+
+    // function fn(arr, temp = '') {
+    //   temp += '<ul>';
+    //   for (var i = 0; i < arr.length; i++) {
+    //     temp += '<li>';
+    //     temp += arr[i].name;
+    //     if (arr[i].children) {
+    //       temp =  fn(arr[i].children, temp);
+    //     }
+    //     temp += '</li>';
+    //   }
+    //   temp += '</ul>';
+    //   return temp;
+    // }
+    // box.innerHTML = fn(treeData);
+
+
+
+    // (function(){
+    //   window.a = this.b = c = 2;
+    // })()
+    // console.log(a);
+    // console.log(b);
+    // console.log(c);
+
+
+
+    //封装反转数组函数
+    // function reverse(arr) {
+    //   var fn = function (arr, i) {
+    //     temp = arr[arr.length - (i + 1)];
+    //     arr[arr.length - (i + 1)] = arr[i];
+    //     arr[i] = temp;
+    //   }
+    //   for (var i = 0; i < arr.length / 2; i++) {
+    //     fn(arr, i);
+    //   }
+    //   return arr;
+    // }
+
+    // arr = [7, 2, 4, 6, 1];
+    // console.log(reverse(arr));
+
+
+
+    //实习判断是否是一个普通对象
+    // function isPlainObj( obj ){
+    //   if (Object.prototype.toString.call(obj) == '[object Object]'){
+    //     return 'ture';
+    //   }else return 'false';
+    // }
+
+    // var obj = {a:1};
+    // var str = 'string';
+    // console.log( isPlainObj(obj) );
+    // console.log( isPlainObj(str) );
+
+
+    //实现判断是否是一个空对象
+    function isPlainObj(obj) {
+      if (Object.prototype.toString.call(obj) == '[object Object]') {
+        var arr= Object.keys(obj);
+        
+        if (arr.length == 0) {
+          return 'true';
+        } else return 'false';
+      } else return 'not a object';
+    }
+
+    var obj1 = { a: 1 };
+    var obj2 = {};
+    var str = 'string';
+    console.log(isPlainObj(obj1));
+    console.log(isPlainObj(obj2));
+    console.log(isPlainObj(str));
+
+
+
+  </script>
+</body>
+
+</html>

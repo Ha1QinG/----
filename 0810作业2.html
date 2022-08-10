@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function isPlainObj(obj) {
+      if (Object.prototype.toString.call(obj) == '[object Object]') {
+        var arr = Object.keys(obj)
+        if (arr.length == 0) {
+          return true;
+        } else return false;
+      } else return 'not a object';
+    }
+
+    function extend() {
+      //args 为形参的数组
+      var args = [...arguments];
+
+      var newObj = {};
+      for(var i = 0;i<args.length;i++){
+        if(!isPlainObj(args[i])){
+          //判断是否非空对象   是非空对象：
+          for( k in args[i]){
+          newObj[k] = args[i][k];
+          }
+        }
+      }
+
+      return newObj;
+    }
+
+    console.log(extend({}, { a: 1 }, { a: {d:3}, b: 1 }, { c: 4 }));
+    ;
+
+
+
+
+  </script>
+</body>
+
+</html>

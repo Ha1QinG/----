@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+
+    // // 柯里化函数1
+
+    // function fn(x, y) {
+    //   var sum = x + y;
+    //   if (y == null) {
+    //     return function (y) {
+    //       return sum = x + y;
+    //     }
+    //   }
+    //   return sum;
+    // }
+
+    // console.log( fn(1, 2) );
+    // console.log( fn(1)(2) );
+
+
+
+    // // 柯里化函数2
+
+    // function fn( x ) {
+    //   var sum = x;
+    //   var more =  function(y){
+    //     sum += y ;
+    //     return more;
+    //   }
+    //   more.toString = function(){
+    //     return sum;
+    //   }
+    //   return more;
+    // }
+
+    // console.log( +fn(1)(2)(3)  );
+    
+
+
+    // // 柯里化函数3
+    function add(){
+      var sum = 0;
+      for( let i = 0 ; i<arguments.length;i++){
+        sum += arguments[i]; 
+      }
+      var add =  function(){
+        for(let i = 0;i<arguments.length;i++ ){
+          sum += arguments[i];
+        }
+        return add;
+      }
+      add.toString = function(){
+        return sum;
+      }
+      return add;
+    }
+
+    console.log( +add(1,2)(3,4)(1) );
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // function deepcopy( oldObj,newObj) {
+    //   for (var k in oldObj) {
+    //     var temp = oldObj[k];
+    //     newObj[k] = temp;
+    //     var fn = function (obj) {
+    //       if (obj instanceof Object) {
+    //         newObj[k] = {};
+    //         for (var j in obj) {
+    //           newObj[k][j] = obj[j];
+    //         }
+    //         return fn(newObj[k]);
+    //       } if (obj instanceof Array) {
+    //         newObj[k] = [];
+    //         for (var n in obj) {
+    //           newObj[k][n] = obj[n];
+    //         }
+    //       }
+    //       else {
+    //         return newObj;
+    //       }
+    //     }
+    //     return fn(temp);
+    //   }
+    // }
+    // var arr = [1, 2, { age: 23, name: 'tony', hobby: ['篮球'] }]
+    // console.log(deepcopy(arr));
+
+
+
+    var obj = {
+      id: 1,
+      name: 'andy',
+      msg: {
+        age: 18
+      }
+    };
+    var j = {};
+
+    function deepCopy(newobj, oldobj) {
+      for (var k in oldobj) {
+        var item = oldobj[k];
+        // 判断这个值是否是数组
+        if (item instanceof Array) {
+          newobj[k] = [];
+          deepCopy(newobj[k], item);
+
+        } else if (item instanceof Object) {
+        // 判断这个值是否是对象
+          newobj[k] = {};
+          deepCopy(newobj[k], item);
+
+        } else {
+        // 属于简单数据类型
+          newobj[k] = item;
+        }
+      }
+    }
+    deepCopy(j, obj);
+    console.log('j', j);
+    j.id = 4;
+    console.log('obj', obj);
+
+
+
+
+
+  </script>
+</body>
+
+</html>
