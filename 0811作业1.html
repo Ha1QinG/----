@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // var light = {
+    //   0: "红灯",
+    //   1: "绿灯",
+    //   "-1": "黄灯",
+    // };
+    // var i = -1;
+
+    // function juge() {
+    //     if(i == -1){
+    //     console.log(light[i]);
+    //     i++;
+    //   }else{
+    //     console.log(light[i]);
+    //     return (i==0 ? (i++):(i=0-i));
+    //   }
+    // }
+
+    // juge();
+
+
+
+    // var a = false;
+    // var b = true;
+    // var c = true;
+
+    // a ? console.log(a,'a'):( (b && c )? console.log(b,'b'):console.log(c,'c'));
+
+    // if (a) {
+    //   console.log(a);
+    // } else {
+    //   if (b) {
+    //     console.log(b);
+    //   } else {
+    //     if (c) {
+    //       console.log(c);
+    //     }
+    //   }
+    // }
+
+
+
+    // var price = 13457856715851.31637;
+    // price = price.toFixed(2); // 返回字符串类型
+    // price = Number(price);
+    // price = price.toLocaleString(price);
+    // console.log(price);
+
+
+
+    //  短路实现：少年（12~16） 青年（16~40）中年（40~60） 老年（60~）
+    // var age = 33;
+    // function juge(age) {
+    //   return (age >= 60) && '老年' || (age >= 40 && age < 60) && '中年' || (age >= 16 && age < 40) && '青年' || (age >= 12) && '少年';
+    // }
+    // console.log(juge(age));
+
+
+    function test() {
+      try {
+        console.log('test_try');
+        throw new Error('throw')
+      } catch (error) {
+        console.log(error.message);
+        return 'test_catch'
+      } finally {
+        console.log('test_finally');
+
+      }
+    }
+    test()
+
+  </script>
+
+
+</body>
+
+</html>

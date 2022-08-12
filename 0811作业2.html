@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // var treeData = [
+    //   {
+    //     id: 1,
+    //     name: '江西省',
+    //     children: [
+    //       {
+    //         id: 3,
+    //         name: '南昌市',
+    //         children: [
+    //           { id: 5, name: '高新区' },
+    //           { id: 6, name: '西湖区' }
+    //         ]
+    //       },
+    //       {
+    //         id: 4,
+    //         name: '九江市',
+    //         children: [
+    //           { id: 7, name: '浔阳市' },
+    //           { id: 8, name: '柴桑区' }
+    //         ]
+    //       }
+    //     ]
+    //   },
+    //   { id: 2, name: '湖南省' }
+    // ];
+
+    var data = [
+      {id:1,name:'江西省'},
+      {id:2,name:'湖南省'},
+      {id:3,pid:1,name:'南昌市'},
+      {id:4,pid:1,name:'九江市'},
+      {id:5,pid:3,name:'高新区'},
+      {id:6,pid:3,name:'西湖区'},
+      {id:7,pid:4,name:'浔阳区'},
+      {id:8,pid:4,name:'柴桑区'},
+    ];
+
+    function change(arr , newData=[]){
+      
+    }
+
+
+    newData(data);
+
+    
+  </script>
+
+</body>
+
+</html>
