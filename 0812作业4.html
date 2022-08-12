@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    var name = 'get_element_by_id';
+    String.prototype.changeName = function (name, find = 0) {
+      var newName = '';
+      var fn = function (dname) {
+        find = dname.indexOf('_');
+        if (find == -1) {
+          return newName;
+        } else {
+          newName = dname.slice(0, find);
+          newName = newName.concat(dname.slice(find + 1, find + 2).toUpperCase());
+          newName = newName.concat(dname.slice(find + 2))
+          return fn(newName);
+        }
+      }
+      return fn(name);
+    }
+    console.log(name.changeName(name));
+
+
+  </script>
+
+</body>
+
+</html>

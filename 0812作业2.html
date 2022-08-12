@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // var str = '   abcdefg   ';
+
+    // console.log(str.trim().slice(1,2).toUpperCase().charCodeAt());
+
+
+    // var str = 'abcdefg';
+
+    // console.log(str.slice(str.indexOf('c'),str.indexOf('f')));
+    // console.log(str.slice( 0,2 ));
+    // console.log(str.slice( -3 ));
+    // console.log(str.slice( 1,-1 ));
+
+
+    // var url1 = 'http://www.baidu.com';  // http
+    // var url2 = 'https://www.baidu.com'; // https
+    // var url3 = 'ftp://www.baidu.com';   // ftp
+    // var url4 = 'ws://www.baidu.com';    //ws
+
+    // console.log(url1.slice(0, (url1.indexOf('://'))));
+    // console.log(url2.slice(0, (url2.indexOf('://'))));
+    // console.log(url3.slice(0, (url3.indexOf('://'))));
+    // console.log(url4.slice(0, (url4.indexOf('://'))));
+
+
+    // var file1 = 'uploads/abc.123.jpg'; // jpg
+    // var file2 = 'uploads/abc_123.do';  // do
+
+    // console.log(file1.slice((file1.lastIndexOf('.')+1)));
+    // console.log(file2.slice((file2.lastIndexOf('.')+1)));
+    
+
+    var urla = 'http://www.baidu.com/product/index.html'; // www.baidu.com
+    var urlb = 'http://v.scnew.com.cn/index.html';       
+
+    console.log(urla.slice(urla.indexOf('//')+2,urla.indexOf('/',7)));
+    console.log(urlb.slice(urla.indexOf('//')+2,urlb.indexOf('/',7)));
+
+
+  </script>
+
+</body>
+
+</html>

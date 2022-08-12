@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    function padStart(numb, need = 0) {
+      numb = numb.toString();
+      var zero = '0';
+      for (var i = need - numb.length; i > 0; i--) {
+        numb = zero.concat(numb);
+      }
+      return numb;
+    }
+    console.log(padStart(12,5));
+    console.log(padStart(9,3));
+
+  </script>
+
+</body>
+
+</html>

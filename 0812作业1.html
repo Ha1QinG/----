@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    //反转字符串
+    // var str = 'abcdefg';
+    // String.prototype.reverse = function (str) {
+    //   var newStr = '';
+    //   for (var i = str.length - 1; i >= 0; i--) {
+    //     newStr += str.charAt(i);
+    //   }
+    //   return newStr;
+    // }
+
+    // console.log(str.reverse(str));
+
+
+
+    //查找重复次数最多的字符
+    // var str = 'a1ab123daywa';
+    // String.prototype.search = function (str) {
+    //   var obj = {};
+    //   for (var i = 0; i < str.length; i++) {
+    //     if (str[i] in obj) {
+    //       obj[str[i]]++;
+    //     } else {
+    //       obj[str[i]] = 1;
+    //     }
+    //   }
+    //   var max = 0;
+    //   var key = '';
+    //   for (var k in obj) {
+    //     max = (max < obj[k] ? obj[k] : max);
+    //     key = (obj[k] == max ? k : key);
+    //   }
+    //   return key;
+    // }
+
+    // console.log(str.search(str));
+
+
+
+
+    // //查找第二小的数字字符
+    // var str = '4327891';
+    // String.prototype.secondNumber = function (str) {
+    //   var min =  Number.MAX_SAFE_INTEGER;
+    //   var secmin = Number.MAX_SAFE_INTEGER;
+    //   for (var i = 0; i < str.length; i++) {
+    //     if(min > str[i] ){
+    //       secmin = min;
+    //       min = str[i];
+    //     }
+    //   }
+    //   return secmin;
+    // }
+
+    // console.log(str.secondNumber(str));
+
+
+
+    //找出素数
+    // var str = '43278591';
+    // String.prototype.prime = function (str) {
+    //   var arr = [];
+    //   for (var i = 0; i < str.length; i++) {
+    //     if (str[i] == 2) {
+    //       arr.push(str[i]);
+    //     } else if (str[i] > 2){
+    //       var juge = true;
+    //       for (var j = 2; j < str[i]; j++) {
+    //         if (str[i] % j == 0) {
+    //           juge = false;
+    //         }
+    //       }
+    //       if (juge) {
+    //         arr.push(str[i]);
+    //       }
+    //     }
+    //   }
+    //   return arr
+    // }
+
+    // console.log(str.prime(str));
+
+
+  </script>
+
+</body>
+
+</html>
