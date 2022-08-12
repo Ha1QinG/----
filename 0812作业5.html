@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+
+  <script>
+    String.prototype.parseURL = function (str) {
+      str = str.slice(str.indexOf('?') + 1)
+      var obj = {};
+      var fn = function (data) {
+        findObj = data.indexOf('&');
+        if (findObj == -1) {
+          obj[data.slice(0, data.indexOf('='))] = data.slice(data.indexOf('=') + 1);
+          return obj;
+        } else {
+          obj[data.slice(0, data.indexOf('='))] = data.slice(data.indexOf('=') + 1, findObj);
+          str = str.slice(findObj + 1)
+          return fn(str);
+        }
+      }
+      return fn(str);
+    }
+
+    var str = 'index.html?name=tony&age=24&gender=boy';
+    console.log(str.parseURL(str));
+
+
+  </script>
+
 </body>
+
 </html>
