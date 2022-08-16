@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    function mark(str, markStr , newStr = '') {
+      if (str.indexOf(markStr) !== -1) {
+        newStr += str.slice(0, str.indexOf(markStr));
+        var fn = function (str) {
+          newStr += '<mark>' + markStr + '</mark>';
+          str = str.slice(str.indexOf(markStr) + markStr.length);
+          return mark(str, markStr,newStr);
+        }
+        return fn(str);
+      } else {
+        return newStr;
+      }
+    }
+
+    var str = '坚决执行一国两制，拒绝任何国家干扰一国两制';
+    var markStr = '一国两制'
+    document.write(mark(str, markStr));
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // var str = 'get-element-by-id';
+    // function nameChange(str) {
+    //   var newStr = '';
+    //   var syb = '-';
+    //   for(var i = 0 ;i<str.length;i++){
+    //     if(str[i]== syb){
+    //       newStr += str[++i].toUpperCase();
+    //     }else{
+    //       newStr += str[i];
+    //     }
+    //   }
+    //   return newStr;
+    // }
+    // console.log(nameChange(str));
+
+
+    // function fn(str) {
+    //   var arr = str.split('.');
+    //   var numb = arr[0];
+    //   var pointNumb = arr[1];
+    //   var newStr = '';
+    //   var j = 0;
+    //   for (var i = numb.length - 1; i >= 0; i--) {
+    //     j++;
+    //     newStr = (j % 3 == 0 && j != numb.length ? ',' : '') + numb[i] + newStr;
+    //   }
+    //   newStr += '.' + pointNumb;
+    //   return newStr;
+    // }
+
+    // var str = '121314536.542';
+    // console.log(fn(str));
+
+
+
+    String.prototype.capitalize = function(str){
+      var newStr = '';
+      newStr += str.slice(0,1).toUpperCase();
+      newStr += str.slice(1);
+      return newStr;
+    }
+
+    var str = 'abcedfg';
+    console.log( str.capitalize(str) );
+    
+
+
+  </script>
+
+</body>
+
+</html>

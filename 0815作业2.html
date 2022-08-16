@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 回文函数
+    // function isPalindrome1(str) {
+    //   var downStr = '';
+    //   downStr = str.slice(str.length/2+1);
+    //   var newStr = '';
+    //   for(var i = downStr.length-1; i>=0;i--){
+    //     newStr += downStr[i];
+    //   }
+    //   if (str.slice(0, str.length / 2) == newStr ) {
+    //     return true;
+    //   }else{
+    //     return false;
+    //   }
+    // }
+
+
+    // var str = 'abcdefg';
+    // var str1 = '强国中数中国强';
+    // console.log(isPalindrome1(str));
+    // console.log(isPalindrome1(str1));
+
+
+
+    //手机掩码
+    function fn( numb ){
+      numb = numb.toString();
+      if(numb.length != 11){
+        return '请输入正确的手机号码;'
+      }else{
+        var upNumb = '';
+        var backNumb = '';
+        var star = '****';
+        var newNumb = '';
+        upNumb = numb.substr(0,3);
+        backNumb = numb.substr(6,4);
+        newNumb = upNumb + star + backNumb;
+        return newNumb;
+      }
+    }
+
+    var num = 13479468870;
+    console.log(fn(num));
+    
+
+
+
+
+  </script>
+
+</body>
+
+</html>

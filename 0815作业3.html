@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    var url = 'http://www.baidu.com/product/abc/index.html?name=tony&age=30';
+    console.log(parseURL(url));
+
+    function parseURL(str) {
+      var obj = {};
+      obj.protocol = str.slice(0, (str.indexOf('://') + 3));
+      str = str.slice(str.indexOf('://') + 3);
+      obj.domain = str.slice(0, str.indexOf('/'));
+      str = str.slice(str.indexOf('/'));
+      obj.path = str.slice(0, str.lastIndexOf('/') + 1);
+      str = str.slice(str.lastIndexOf('/') + 1);
+      obj.filename = str.slice(0, str.indexOf('?'));
+      str = str.slice(str.indexOf('?') + 1);
+      obj.params = {};
+      var arr = str.split('&');
+      for(var i = 0; i<arr.length;i++){
+        obj.params[arr[i].slice(0,arr[i].indexOf('='))] = arr[i].slice(arr[i].indexOf('=') + 1);
+      }
+      return obj;
+    }
+
+
+
+
+  </script>
+
+</body>
+
+</html>
