@@ -21,11 +21,12 @@
         }
         return fn(str);
       } else {
+        newStr += str.slice(0);
         return newStr;
       }
     }
 
-    var str = '坚决执行一国两制，拒绝任何国家干扰一国两制';
+    var str = '坚决执行一国两制，拒绝任何国家干扰一国两制,123';
     var markStr = '一国两制'
     document.write(mark(str, markStr));
 
