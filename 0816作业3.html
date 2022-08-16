@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1 id="myname">?</h1>
+  <button id="btn" onclick="start(this)" >开始点名</button>
+
+  <script>
+
+    // function messArr(arr) {
+    //   var i = arr.length;
+
+    //   while (i--) {
+    //     var rand = Math.floor(Math.random() * i);
+    //     if (i !== rand) {
+    //       var temp = arr[i];
+    //       arr[i] = arr[rand];
+    //       arr[rand] = temp;
+    //     }
+    //     else break;
+    //   }
+    //   return arr;
+    // }
+
+    // var arr = [1, 2, 3, 4, 5, 6]
+    // console.log(messArr(arr));
+
+
+    // //  随机出现6位永不重复的字符
+    // function randStr(str, need = 6) {
+    //   var arr = str.split('');
+    //   var newArr = [];
+    //   for (var i = 0; i < need; i++) {
+    //     do {
+    //       var index = Math.floor(Math.random() * arr.length)
+    //     } while (newArr.indexOf(arr[index]) !== -1)
+    //     newArr.push(arr[index]);
+    //   }
+
+    //   return newArr.join('');
+    // }
+
+    // var str = '0123456789qwertyuiop!@#$%^&*()';
+    // console.log(randStr(str));
+
+
+
+    //9.角度转弧度、弧度转角度
+
+    // var  deg = 30;
+    // var degToRadian = deg * Math.PI / 180;
+
+    // var radian = 2;
+    // var radianToDeg = radian * 180 / Math.PI;
+
+    // console.log( degToRadian , radianToDeg );
+
+
+
+    // //10.随机出现指定区间的数字
+    // function rand(min, max) {
+    //   return Math.floor(Math.random() * (max - min) + min)
+
+    // }
+    // console.log(rand(10,50));
+
+
+    // 简单的随机点名
+    // var fruit = ['苹果', '菠萝', '西瓜', '橘子', '香蕉'];
+
+    // function start(btn) {
+    //   var time = 5;
+    //   btn.disabled = true;
+    //   myname.innerText = time;
+
+    //   var int = setInterval(function () {
+    //     time -= 1;
+    //     myname.innerText = time;
+    //     if (time == 0) {
+    //       clearInterval(int);
+    //       btn.disabled = false;
+    //       var index = Math.floor(Math.random() * fruit.length);
+    //       myname.innerHTML = fruit[index];
+    //     }
+    //   }, 1000)
+    // }
+
+
+    
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>

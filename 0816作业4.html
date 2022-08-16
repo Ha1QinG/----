@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 100px;
+    }
+
+    #box {
+      position: relative;
+      width: 360px;
+      height: 360px;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+    }
+
+    #box span {
+      position: absolute;
+      background-color: aquamarine;
+      padding: 6px 12px;
+      white-space: nowrap;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="box">
+
+
+  </div>
+
+  <script>
+    var list = [
+      { id: 1, name: '刘备' },
+      { id: 2, name: '关羽' },
+      { id: 3, name: '张飞' },
+      { id: 4, name: '马超' },
+      { id: 5, name: '曹操' },
+      { id: 6, name: '孙策' },
+      { id: 7, name: '孙策' },
+      { id: 8, name: '孙策' },
+      { id: 9, name: '孙策' },
+      { id: 10, name: '孙策' },
+    ]
+
+    circle();
+
+    function circle() {
+      var temp = '';
+      var r = 180;
+      var total = list.length;
+
+      for (var i = 0; i < total; i++) {
+        var radian = (360 / total) * (Math.PI / 180) * i;
+        var x = r + Math.cos(radian) * r;
+        var y = r + Math.sin(radian) * r;
+
+        temp += '<span style = "left:' + x + 'px;top:' + y + 'px;">' + list[i].name + '</span>';
+      }
+      box.innerHTML = temp;
+    }
+
+
+  </script>
+
+</body>
+
+</html>

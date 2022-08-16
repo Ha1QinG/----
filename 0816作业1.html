@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var fruit = ['苹果', '桔子', '香蕉', '菠萝', '西瓜', '桃子', '榴莲'];
+    function select() {
+      var index1 = Math.floor(Math.random() * fruit.length)
+      var arr = [...fruit];
+      delete arr[index1];
+      var newFruit = arr.filter(function (el) {
+        return el != null;;
+      });
+      var index2 = Math.floor(Math.random() * newFruit.length)
+      return [fruit[index1], newFruit[index2]];
+    }
+
+    select();
+  </script>
+
+</body>
+
+</html>
