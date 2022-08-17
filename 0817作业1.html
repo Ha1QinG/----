@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin-left: 400px;
+      margin-top: 100px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #box {
+      border-collapse: collapse;
+    }
+
+    #box th,
+    td {
+      text-align: center;
+      width: 50px;
+      padding: 20px;
+    }
+
+    #box th {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .numb::before,
+    .score::before {
+      content: "▲";
+      position: absolute;
+      right: 8px;
+      top: 18px;
+      font-size: 12px;
+      color: (data-color);
+    }
+
+    .numb::after,
+    .score::after {
+      content: "▼";
+      position: absolute;
+      right: 8px;
+      top: 30px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <table id="box" border="1px">
+    <thead>
+      <tr>
+        <th class="numb"><a href="#" onclick="No(arr)">编号</a></th>
+        <th>姓名</th>
+        <th class="score"><a href="#" onclick="list(arr)">成绩</a></th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+  </table>
+
+  <script>
+    var arr = [
+      { id: '1', name: '张三', score: '78' },
+      { id: '2', name: '李四', score: '58' },
+      { id: '4', name: '王五', score: '89' },
+      { id: '3', name: '老六', score: '63' },
+    ];
+
+    //初始化页面
+    function fn(arr) {
+      var temp = '';
+      for (var i = 0; i < arr.length; i++) {
+        temp += '<tr>\
+        <td class="hm">'+ arr[i].id + '</td>\
+        <td>'+ arr[i].name + '</td>\
+        <td class="cj">'+ arr[i].score + '</td>\
+      </tr>'
+      }
+      tbody.innerHTML = temp;
+    }
+    fn(arr);
+    var type = 0;
+
+
+    // 点击成绩实现 变化顺序
+    function list(arr) {
+      var temp = '';
+      var newArr = JSON.parse(JSON.stringify(arr));
+
+      type = (type == 0 ? 1 : (type == 1 ? -1 : 0))
+      newArr.sort(function (a, b) {
+        return (a.score).localeCompare(b.score) * type;
+      })
+      for (var i = 0; i < newArr.length; i++) {
+        temp += '<tr>\
+        <td class="hm">'+ newArr[i].id + '</td>\
+        <td>'+ newArr[i].name + '</td>\
+        <td class="cj">'+ newArr[i].score + '</td>\
+      </tr>'
+      }
+      tbody.innerHTML = temp;
+      console.log(newArr);
+      return newArr;
+    }
+
+    // 点击编号实现 变化顺序
+    function No(arr) {
+      var temp = '';
+      var newArr = JSON.parse(JSON.stringify(arr));
+
+      type = (type == 0 ? 1 : (type == 1 ? -1 : 0))
+      newArr.sort(function (a, b) {
+        return (a.id).localeCompare(b.id) * type;
+      })
+      for (var i = 0; i < newArr.length; i++) {
+        temp += '<tr>\
+        <td class="hm">'+ newArr[i].id + '</td>\
+        <td>'+ newArr[i].name + '</td>\
+        <td class="cj">'+ newArr[i].score + '</td>\
+      </tr>'
+      }
+      tbody.innerHTML = temp;
+      console.log(newArr);
+      return newArr;
+    }
+
+
+
+  </script>
+</body>
+
+</html>
