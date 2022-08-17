@@ -13,15 +13,12 @@
     function select() {
       var index1 = Math.floor(Math.random() * fruit.length)
       var arr = [...fruit];
-      delete arr[index1];
-      var newFruit = arr.filter(function (el) {
-        return el != null;;
-      });
-      var index2 = Math.floor(Math.random() * newFruit.length)
-      return [fruit[index1], newFruit[index2]];
+      arr.splice(index1,1);
+      var index2 = Math.floor(Math.random() * arr.length)
+      return [fruit[index1], arr[index2]];
     }
 
-    select();
+    select()
   </script>
 
 </body>
