@@ -33,17 +33,17 @@
       { id: 9, cid: 3, name: '罗宋汤' },
     ]
 
-    
+
     function view(arr1, arr2) {
       var temp = '';
       for (var i = 0; i < arr1.length; i++) {
-        temp += '<ul id="list' + i + '">' + arr1[i].name 
+        temp += '<ul id="list' + i + '"><h3>' + arr1[i].name+'</h3>'
         for (var j = 0; j < arr2.length; j++) {
-          if(arr2[j].cid == arr1[i].id){
-            temp += '<li>'+arr2[j].name+'</li>';
+          if (arr2[j].cid == arr1[i].id) {
+            temp += '<li>' + arr2[j].name + '</li>';
           }
         }
-        temp +=  '</ul>'
+        temp += '</ul>'
       }
       box.innerHTML = temp;
     }
@@ -64,7 +64,7 @@
       newData.sort(function (a, b) {
         return b.number - a.number;
       })
-      view(newData,product);
+      view(newData, product);
       return newData;
     }
 
