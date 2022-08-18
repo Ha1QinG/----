@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="box">
+
+  </div>
+
+  <script>
+
+    var category = [
+      { id: 1, name: '酒水' },
+      { id: 2, name: '主食' },
+      { id: 3, name: '汤' },
+    ]
+
+    var product = [
+      { id: 1, cid: 1, name: '啤酒' },
+      { id: 2, cid: 1, name: '可乐' },
+      { id: 3, cid: 1, name: '雪碧' },
+      { id: 4, cid: 2, name: '米饭' },
+      { id: 5, cid: 2, name: '馒头' },
+      { id: 6, cid: 2, name: '窝窝头' },
+      { id: 7, cid: 2, name: '面条' },
+      { id: 8, cid: 3, name: '酸辣汤' },
+      { id: 9, cid: 3, name: '罗宋汤' },
+    ]
+
+    
+    function view(arr1, arr2) {
+      var temp = '';
+      for (var i = 0; i < arr1.length; i++) {
+        temp += '<ul id="list' + i + '">' + arr1[i].name 
+        for (var j = 0; j < arr2.length; j++) {
+          if(arr2[j].cid == arr1[i].id){
+            temp += '<li>'+arr2[j].name+'</li>';
+          }
+        }
+        temp +=  '</ul>'
+      }
+      box.innerHTML = temp;
+    }
+
+    console.log(compare(category, product));
+    // 对category 重新排序 ，返回新数组
+    function compare(list, pro) {
+      var arr = [0, 0, 0];
+      var newData = [...category];
+      for (var i = 0; i <= list.length - 1; i++) {
+        for (var j = 0; j <= pro.length - 1; j++) {
+          if (list[i].id == pro[j].cid) {
+            arr[i]++;
+          }
+        }
+        newData[i].number = arr[i];
+      }
+      newData.sort(function (a, b) {
+        return b.number - a.number;
+      })
+      view(newData,product);
+      return newData;
+    }
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

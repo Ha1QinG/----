@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin-left: 400px;
+      margin-top: 100px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #box {
+      border-collapse: collapse;
+    }
+
+    #box th,
+    td {
+      text-align: center;
+      width: 50px;
+      padding: 20px;
+      user-select: none;
+    }
+
+    #box th {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .numb::before,
+    .score::before {
+      content: "▲";
+      position: absolute;
+      right: 8px;
+      top: 18px;
+      font-size: 12px;
+    }
+
+    .numb1::before,
+    .score1::before {
+      color: red;
+    }
+
+    .numb::after,
+    .score::after {
+      content: "▼";
+      position: absolute;
+      right: 8px;
+      top: 30px;
+      font-size: 12px;
+    }
+
+    .numb2::after,
+    .score2::after {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <table id="box" border="1px">
+    <thead>
+      <tr>
+        <th class="numb"><a href="#" onclick="No(arr)">编号</a></th>
+        <th>姓名</th>
+        <th class="score"><a href="#" onclick="list(arr)">年龄</a></th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+  </table>
+
+  <script>
+    var numb = document.querySelector('.numb')
+    var score = document.querySelector('.score')
+    var arr = [
+      { id: '1', name: '刘备', age: '43' },
+      { id: '2', name: '张飞', age: '37' },
+      { id: '3', name: '关羽', age: '34' },
+      { id: '4', name: '赵云', age: '32' },
+      { id: '5', name: '曹操', age: '53' },
+      { id: '6', name: '小乔', age: '26' },
+    ];
+
+    //初始化页面
+    function fn(arr) {
+      var temp = '';
+      for (var i = 0; i < arr.length; i++) {
+        temp += '<tr>\
+        <td class="hm">'+ arr[i].id + '</td>\
+        <td>'+ arr[i].name + '</td>\
+        <td class="cj">'+ arr[i].age + '</td>\
+      </tr>'
+      }
+      if (!arr.length) temp = '<tr><td colspan = "9999">暂无数据!</tr>'
+      tbody.innerHTML = temp;
+    }
+    fn(arr);
+    var type = 0;
+    var type2 = 0;
+
+
+    // 点击成绩实现 变化顺序
+    function list(arr) {
+      var temp = '';
+      var newArr = JSON.parse(JSON.stringify(arr));
+      if (numb.className !== 'numb') { numb.className = 'numb' };
+
+      type = (type == 0 ? 1 : (type == 1 ? -1 : 0))
+      newArr.sort(function (a, b) {
+        return (a.age).localeCompare(b.age) * type;
+      })
+      for (var i = 0; i < newArr.length; i++) {
+        temp += '<tr>\
+        <td class="hm">'+ newArr[i].id + '</td>\
+        <td>'+ newArr[i].name + '</td>\
+        <td class="cj">'+ newArr[i].age + '</td>\
+      </tr>'
+      }
+      console.log(type);
+
+      if (score.className == 'score') {
+        score.className = 'score score1'
+      } else if (score.className == 'score score1') {
+        score.className = 'score score2'
+      } else {
+        score.className = 'score';
+      }
+      tbody.innerHTML = temp;
+      return newArr;
+    }
+
+    // 点击编号实现 变化顺序
+    function No(arr) {
+      var temp = '';
+      var newArr = JSON.parse(JSON.stringify(arr));
+      if (score.className !== 'score') { score.className = 'score' };
+
+      type2 = (type2 == 0 ? 1 : (type2 == 1 ? -1 : 0))
+      newArr.sort(function (a, b) {
+        return (a.id).localeCompare(b.id) * type2;
+      })
+      for (var i = 0; i < newArr.length; i++) {
+        temp += '<tr>\
+        <td class="hm">'+ newArr[i].id + '</td>\
+        <td>'+ newArr[i].name + '</td>\
+        <td class="cj">'+ newArr[i].age + '</td>\
+      </tr>'
+      }
+      console.log(type2);
+
+      if (numb.className == 'numb') {
+        numb.className = 'numb numb1'
+      } else if (numb.className == 'numb numb1') {
+        numb.className = 'numb numb2'
+      } else {
+        numb.className = 'numb';
+      }
+      tbody.innerHTML = temp;
+      return newArr;
+    }
+
+
+
+  </script>
+</body>
+
+</html>

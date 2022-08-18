@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button onclick="add()">新增</button>
+  <div id="box"></div>
+
+  <script>
+    var data = ['苹果', '香蕉','菠萝','橘子','芒果','葡萄'];
+    view(data);
+
+    function add() {
+      var newData = prompt('请输入水果名称：')
+      var newIn = +prompt('请输入插入的位置：')
+      data.splice(newIn, 0, newData);
+      view(data);
+    }
+
+    function view(arr) {
+      var temp = '';
+      for (var i = 0; i < arr.length; i++) {
+        temp += '<p>' + arr[i] + '~~~~~<button onclick="up(' + i + ')">上移</button>\
+        <button onclick="down('+ i + ')">下移</button>\
+        <button onclick="del(' + i + ')">删除</button></p>';
+      }
+      box.innerHTML = temp;
+    }
+
+    function del(index) {
+      if (confirm('您确定要删除吗？')) {
+        data.splice(index, 1);
+      }
+      view(data)
+    }
+
+    function up(index) {
+      if (index == 0) {
+        data.push(data.shift())
+      } else {
+        var temp = data[index];
+        data[index] = data[index - 1];
+        data[index - 1] = temp;
+      }
+      view(data);
+    }
+
+    function down(index) {
+      if (index == data.length-1) {
+        data.unshift(data.pop())
+      } else {
+        var temp = data[index];
+        data[index] = data[index + 1];
+        data[index + 1] = temp;
+      }
+      view(data);
+    }
+
+  </script>
+
+
+</body>
+
+</html>

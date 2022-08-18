@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button{
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+
+  <script>
+    var data = ['首页', '关于', '产品', '联系'];
+    view(data)
+
+    function view(arr) {
+      var temp = '';
+      for (var i = 0; i < arr.length; i++) {
+        temp += '<button onclick="del(' + i + ')">' + arr[i] + '</button>  '
+      }
+      box.innerHTML = temp;
+    }
+
+    function del(index){
+      if(confirm("您确定吗？")){
+        data.push(data.splice(index,1))
+        view(data);
+      }
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>
