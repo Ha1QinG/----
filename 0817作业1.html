@@ -102,12 +102,14 @@
     }
     fn(arr);
     var type = 0;
+    var type2 = 0;
 
 
     // 点击成绩实现 变化顺序
     function list(arr) {
       var temp = '';
       var newArr = JSON.parse(JSON.stringify(arr));
+      if (numb.className !== 'numb') { numb.className = 'numb' };
 
       type = (type == 0 ? 1 : (type == 1 ? -1 : 0))
       newArr.sort(function (a, b) {
@@ -120,6 +122,8 @@
         <td class="cj">'+ newArr[i].score + '</td>\
       </tr>'
       }
+      console.log(type);
+
       if (score.className == 'score') {
         score.className = 'score score1'
       } else if (score.className == 'score score1') {
@@ -135,10 +139,11 @@
     function No(arr) {
       var temp = '';
       var newArr = JSON.parse(JSON.stringify(arr));
+      if (score.className !== 'score') { score.className = 'score' };
 
-      type = (type == 0 ? 1 : (type == 1 ? -1 : 0))
+      type2 = (type2 == 0 ? 1 : (type2 == 1 ? -1 : 0))
       newArr.sort(function (a, b) {
-        return (a.id).localeCompare(b.id) * type;
+        return (a.id).localeCompare(b.id) * type2;
       })
       for (var i = 0; i < newArr.length; i++) {
         temp += '<tr>\
@@ -147,6 +152,8 @@
         <td class="cj">'+ newArr[i].score + '</td>\
       </tr>'
       }
+      console.log(type2);
+
       if (numb.className == 'numb') {
         numb.className = 'numb numb1'
       } else if (numb.className == 'numb numb1') {
