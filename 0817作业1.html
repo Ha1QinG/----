@@ -25,6 +25,7 @@
       text-align: center;
       width: 50px;
       padding: 20px;
+      user-select: none;
     }
 
     #box th {
@@ -41,6 +42,11 @@
       font-size: 12px;
     }
 
+    .numb1::before,
+    .score1::before {
+      color: red;
+    }
+
     .numb::after,
     .score::after {
       content: "▼";
@@ -48,6 +54,11 @@
       right: 8px;
       top: 30px;
       font-size: 12px;
+    }
+
+    .numb2::after,
+    .score2::after {
+      color: red;
     }
   </style>
 </head>
@@ -67,6 +78,8 @@
   </table>
 
   <script>
+    var numb = document.querySelector('.numb')
+    var score = document.querySelector('.score')
     var arr = [
       { id: '1', name: '张三', score: '78' },
       { id: '2', name: '李四', score: '58' },
@@ -84,6 +97,7 @@
         <td class="cj">'+ arr[i].score + '</td>\
       </tr>'
       }
+      if (!arr.length) temp = '<tr><td colspan = "9999">暂无数据!</tr>'
       tbody.innerHTML = temp;
     }
     fn(arr);
@@ -106,6 +120,13 @@
         <td class="cj">'+ newArr[i].score + '</td>\
       </tr>'
       }
+      if (score.className == 'score') {
+        score.className = 'score score1'
+      } else if (score.className == 'score score1') {
+        score.className = 'score score2'
+      } else {
+        score.className = 'score';
+      }
       tbody.innerHTML = temp;
       return newArr;
     }
@@ -125,6 +146,13 @@
         <td>'+ newArr[i].name + '</td>\
         <td class="cj">'+ newArr[i].score + '</td>\
       </tr>'
+      }
+      if (numb.className == 'numb') {
+        numb.className = 'numb numb1'
+      } else if (numb.className == 'numb numb1') {
+        numb.className = 'numb numb2'
+      } else {
+        numb.className = 'numb';
       }
       tbody.innerHTML = temp;
       return newArr;
