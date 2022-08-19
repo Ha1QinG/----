@@ -37,7 +37,7 @@
     function view(arr1, arr2) {
       var temp = '';
       for (var i = 0; i < arr1.length; i++) {
-        temp += '<ul id="list' + i + '"><h3>' + arr1[i].name+'</h3>'
+        temp += '<ul id="list' + i + '"><h3>' + arr1[i].name + '</h3>'
         for (var j = 0; j < arr2.length; j++) {
           if (arr2[j].cid == arr1[i].id) {
             temp += '<li>' + arr2[j].name + '</li>';
