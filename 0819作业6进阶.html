@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    var obj = {
+      a: {
+        b: 1,
+        c: 2,
+        d: { e: 5 }
+      },
+      b: [1, 3, { a: 2, b: 3 }],
+      c: 3,
+    }
+
+
+    function flat(obj) {
+
+      var newObj = {}
+
+      function format(o, pre) {
+        for (let key in o) {
+          if (typeof o[key] === 'object') {
+            if (!pre) {
+              format(o[key], key)
+            } else {
+              if (Array.isArray(o)) {
+                format(o[key], pre + '[' + key + ']')
+              } else {
+                format(o[key], pre + '.' + key)
+              }
+            }
+          } else {
+            if (!pre) {
+              newObj[key] = o[key]
+            } else {
+              if (Array.isArray(o)) {
+                newObj[pre + '[' + key + ']'] = o[key]
+              } else {
+                newObj[pre + '.' + key] = o[key]
+              }
+            }
+          }
+        }
+      }
+      format(obj, null)
+      return newObj
+    }
+    console.log(flat(obj))
+
+    // console.log(flatten(obj));
+
+    // function flatten(obj,newObj = {}) {
+
+    //   function objF(parent, obj) {
+    //     for (var i in obj) {
+    //       newObj[parent] = i
+    //       return flatten(obj[i],newObj)
+    //     }
+    //   }
+
+    //   function arrF(parent, arr) {
+    //     for (var i in arr) {
+    //       newObj[parent[i]] = i
+    //       return flatten(arr[i],newObj)
+    //     }
+    //   }
+
+    //   function numbF(parent, numb) {
+    //     // for (var i in numb) {
+    //       newObj[parent] = numb
+    //       return flatten(numb[i],newObj)
+    //     // }
+    //   }
+
+    //   for (let i in obj) {
+    //     return (obj[i] instanceof Object ? objF(i, obj[i]) : obj[i] instanceof Array ? arrF(i, obj[i]) :obj[i] instanceof Number? numbF(i, obj[i]):'')
+    //   }
+    //   return newObj;
+    // }
+
+
+  </script>
+
+</body>
+
+</html>

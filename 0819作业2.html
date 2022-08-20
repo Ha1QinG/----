@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 50px;
+    }
+
+    .box {
+      list-style: none;
+      width: 160px;
+      height: 150px;
+      background-color: #ccc;
+      padding-left: 0;
+      overflow: auto;
+      line-height: 30px;
+    }
+
+    .box li {
+      padding: 0 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul id="box" class="box">
+
+  </ul>
+
+  <script>
+
+    var data = [
+      { id: 1, title: '文章标题1' },
+      { id: 2, title: '文章标题2' },
+      { id: 3, title: '文章标题3' },
+      { id: 4, title: '文章标题4' },
+      { id: 5, title: '文章标题5' },
+      { id: 6, title: '文章标题6' },
+      { id: 7, title: '文章标题7' },
+      { id: 8, title: '文章标题8' },
+      { id: 9, title: '文章标题9' },
+      { id: 10, title: '文章标题10' },
+    ];
+
+    view(data)
+
+    function view(arr) {
+      var temp = ''
+      for (let i = 0; i < arr.length; i++) {
+        temp += '<li>' + arr[i].title + '</li>';
+      }
+      box.innerHTML = temp;
+    }
+
+    box.onscroll = function () {
+      var dist = 20; //阈值
+      var top = this.scrollTop; //当前滚动
+      var maxTop = this.scrollHeight; //最大滚动值
+      var selfHeight = this.clientHeight; //第一屏的高度
+      var canScroll = maxTop - selfHeight; // 可以滚动的值
+
+      if (top >= canScroll - dist) {
+        var moreData = [
+          { id: 1, title: '更多的列表标题1' },
+          { id: 2, title: '更多的列表标题2' },
+          { id: 3, title: '更多的列表标题3' },
+          { id: 4, title: '更多的列表标题4' },
+          { id: 5, title: '更多的列表标题5' },
+        ];
+        data = data.concat(moreData);
+        view(data);
+      }
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>

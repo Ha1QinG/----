@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    var arr = [
+      {
+        id: 1,
+        name: '江西省',
+        children: [{
+          id: 11,
+          name: '南昌市',
+          children: {
+            id: 111,
+            name: '高新区',
+          }
+        }
+        ]
+      },
+      {
+        id: 2,
+        name: '浙江省',
+        children: [{
+          id: 21,
+          name: '温州市',
+          children: [
+            { id: 211, name: '鹿城区' }
+          ]
+        }
+        ]
+      },
+    ];
+
+    //递归找父级id
+    function getParentId(data, nodeId) {
+      var arrRes = [];
+      if (data.length == 0) {
+        if (!!nodeId) {
+          arrRes.unshift(nodeId);
+        }
+        return arrRes;
+      }
+      let childrenFn = (data, nodeId) => {
+        for (var i = 0, length = data.length; i < length; i++) {
+          let node = data[i];
+          if (node.id == nodeId) {
+            arrRes.unshift(nodeId);
+            childrenFn(data, node.parentId);
+            break;
+          } else {
+            if (!!node.children) {
+              childrenFn(node.children, nodeId);
+            }
+          }
+        }
+        return arrRes;
+      };
+      arrRes = childrenFn(data, nodeId);
+      return arrRes;
+    };
+
+    // //输入 findParents(111) 返回 [11,1]   找父级id
+    // function findParents(id, parentID = 0) {
+    //   for (var i = 0; i < arr.length; i++) {
+
+    //     function search(obj) {
+    //       if (obj.id == id) {
+    //         var result = [];
+    //         result.unshift(parentID);
+    //         return result;
+    //       }
+    //     }
+    //     console.log(arr[i])
+    //   }
+    //   return result;
+
+    // }
+    // console.log(findParents(2));
+
+
+
+  </script>
+
+</body>
+
+</html>

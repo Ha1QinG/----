@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 100px;
+    }
+
+    #box {
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    #box th,
+    td {
+      text-align: center;
+      width: 50px;
+      padding: 20px;
+      user-select: none;
+    }
+
+    button {
+      width: 25px;
+      height: 25px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <table border="1" id="box">
+    <thead>
+      <th>编号</th>
+      <th id="sort1" class="sort" onclick="list(this,'name','string')">姓名</th>
+      <th>性别</th>
+      <th id="sort2" class="sort" onclick="list(this,'score','number')">成绩</th>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+  </table>
+
+  <p id="pager"></p>
+
+
+  <script>
+
+    var data = [
+      { id: 1, name: '张飞', gender: '男', score: 47 },
+      { id: 2, name: '小乔', gender: '女', score: 78 },
+      { id: 3, name: '大乔', gender: '女', score: 57 },
+      { id: 4, name: '马超', gender: '男', score: 87 },
+      { id: 5, name: '貂蝉', gender: '女', score: 97 },
+      { id: 6, name: '马飞', gender: '男', score: 67 },
+      { id: 7, name: '吕布', gender: '男', score: 48 },
+      { id: 8, name: '刘备', gender: '男', score: 78 },
+      { id: 9, name: '关羽', gender: '男', score: 68 },
+    ]
+    view(data);
+
+    function view(arr,target = 1){  // 目标页
+      var temp = '';
+      var total = arr.length; //总数量
+      var pageSize = 2;   //每页个数
+      var totalPage = Math.ceil(total/pageSize); //总页数
+
+      var start = (target -1 )*pageSize;
+      var end = start + pageSize;
+      var pageData = arr.slice(start,end);
+
+      for(var i = 0; i<pageData.length;i++){
+        temp += '<tr>\
+        <td>'+ pageData[i].id + '</td>\
+        <td>'+ pageData[i].name + '</td>\
+        <td>'+ pageData[i].gender + '</td>\
+        <td>'+ pageData[i].score + '</td>\
+      </tr>';
+      }
+
+      tbody.innerHTML = temp;
+
+      var pageTemp = '';
+      //上一页
+      pageTemp += '<button ' + (target == 1 ? 'disabled' : '') + ' onclick="view(data,' + (target - 1) + ')">&lt;</button>'
+      //页数
+      for (var p = 1; p <= totalPage; p++) {
+        pageTemp += '<button style="color:' + (p == target ? 'red' : '') + '"\
+         onclick="view(data,' + p + ')">' + p + '</button>'
+      }
+
+      //下一页
+      pageTemp += '<button ' + (target == totalPage ? 'disabled' : '') + ' onclick="view(data,' + (target + 1) + ')">&gt;</button>'
+
+      pager.innerHTML = pageTemp;
+
+    }
+
+
+
+
+  </script>
+
+</body>
+
+</html>

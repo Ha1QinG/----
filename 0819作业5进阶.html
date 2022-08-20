@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // {major}.{minor}.{patch}.{alpha|beta|rc}.{number}
+
+    function compare(a, b) {
+      var arrA = a.split('.')
+      var arrB = b.split('.')
+      var result = 0;
+      //前三位一样
+      if (arrA[4]) {
+        var n = arrA[4] > arrB[4] ? 1 : arrA[4] < arrB[4] ? -1 : 0;
+      }
+      if (arrA[3]) {
+        var m = arrA[3] > arrB[3] ? 1 : arrA[3] < arrB[3] ? -1 : n ? n : 0;
+      }
+      //前三位不一样
+      var strA = '';
+      var strB = '';
+      for (var i = 0; i < 3; i++) {
+        strA = strA + arrA[i]
+        strB = strB + arrB[i]
+      }
+      result = (strA > strB ? 1 : strA < strB ? -1 : m ? m : 0)
+
+
+      return result;
+    }
+    console.log(compare('1.2.3', '1.2.4'));
+    console.log(compare('1.3.0.alpha', '1.3.0.alpha'));
+    console.log(compare('1.3.0.alpha.4', '1.3.0.alpha.2'));
+    console.log(compare('1.3.0.alpha.4', '1.4.0.alpha.2'));
+
+
+
+
+  </script>
+
+</body>
+
+</html>
