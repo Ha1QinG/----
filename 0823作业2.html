@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    //  reduce 将二维数组转换成一维数组
+    // let arr = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]
+    // let result = [];
+    // result = arr.reduce(function (a, b) {
+    //   for (var i = 0; i < b.length; i++) {
+    //     result.push(b[i])
+    //   }
+    //   return result
+    // }, '')
+
+    // console.log(result);
+
+
+
+    // //reduce 求数组中的最大值
+    // var arr = [5,1,7,8,9,2];
+    // var max = arr.reduce(function(a,b){
+    //   return max = max > b? max : b ;
+    // },0)
+    // console.log(max);
+
+
+
+    // // reduce 实现数组去重
+    // var arr = [1, 6, 1, 8, 3, 6, 9, 3];
+    // var newArr = [];
+    // newArr = arr.reduce(function (a, b) {
+    //   if (!newArr.includes(b)) {
+    //     newArr.push(b);
+    //   }
+    //   return newArr;
+    // }, '')
+
+    // console.log(newArr);
+
+
+
+    // reduce实现统计字符出现的次数
+    var nums = ['a', 'a', 'b', 'b', 'a', 'c'];
+    var result = {};
+    result = nums.reduce(function (a, b) {
+      if (!result[b]) result[b] = 1;
+      else result[b]++;
+
+      return result;
+    }, '')
+    console.log(result);
+
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>

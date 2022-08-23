@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <select id="province">
+
+  </select>
+  <select id="city">
+    <option value="">请选择市</option>
+  </select>
+  <select id="area">
+    <option value="">请选择区</option>
+  </select>
+
+  <script>
+
+    var data = [
+      {
+        id: 1, name: '江西省', children: [
+          {
+            id: 11,
+            name: '南昌市',
+            children: [
+              { id: 111, name: '高新区' },
+              { id: 112, name: '新建区' },
+            ]
+          },
+          {
+            id: 12,
+            name: '九江市',
+            children: [
+              { id: 111, name: '高新区' },
+              { id: 112, name: '新2建区' },
+            ]
+          }
+        ]
+      },
+      {
+        id: 2, name: '浙江省', children: [
+          {
+            id: 21,
+            name: '温州市',
+            children: [
+              { id: 211, name: '鹿城区' }
+            ]
+          },
+          {
+            id: 12,
+            name: '杭州市',
+            children: [
+              { id: 211, name: '鹿1城区' }
+            ]
+          }
+        ]
+      },
+    ];
+
+
+    showOptions(data, province, '请输入省份');
+
+    function showOptions(arr, target, label) {
+      target.innerHTML = arr.reduce(function (temp, item) {
+        return temp + '<option ' + (((item.id == 1) || (item.id == 11) || (item.id == 111)) ? 'selected' : '') + ' >' + item.name + '</option>'
+      }, '<option>' + label + '</option>')
+
+    }
+
+
+    var provChildren = data[0].children;
+    showOptionsCity(provChildren, city, '请输入城市');
+
+    function showOptionsCity(arr, target, label) {
+      target.innerHTML = arr.reduce(function (temp, item) {
+        return temp + '<option ' + (((item.id == 1) || (item.id == 11) || (item.id == 111)) ? 'selected' : '') + ' >' + item.name + '</option>'
+      }, '<option>' + label + '</option>')
+    }
+
+
+    var cityChildren = data[0].children[0].children || [];
+    showOptionsArea(cityChildren, area, '请输入区域');
+
+    function showOptionsArea(arr, target, label) {
+      target.innerHTML = arr.reduce(function (temp, item) {
+        return temp + '<option ' + (((item.id == 1) || (item.id == 11) || (item.id == 111)) ? 'selected' : '') + ' >' + item.name + '</option>'
+      }, '<option>' + label + '</option>')
+
+    }
+
+
+    province.onchange = function () {
+
+      var provChildren = [];
+      var areaChildren = [];
+      var proIndex = this.selectedIndex - 1;
+      if (proIndex !== -1) provChildren = data[proIndex].children;  // 选择的不是第一个提示
+      showOptions(provChildren, city, '请选择市')         // 书写 选择市
+      showOptions(areaChildren, area, '请选择区')         // 切换省份，清空 区
+
+      city.onchange = function () {
+        var cityChildren = [];
+        var cityIndex = this.selectedIndex - 1;
+        if (cityIndex !== -1) cityChildren = data[proIndex].children[cityIndex].children || [];
+        showOptions(cityChildren, area, '请选择区')         // 书写 选择区
+      }
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // Array.prototype.myForEach = function( callback ){
+    //   for(var i = 0; i<this.length;i++){
+    //     callback( this[i] , i , this )
+    //   }
+    // }
+    // var arr  = [1,2,3,4];
+    // arr.myForEach(function(item,index,val){
+    //   console.log(item,index,val)
+    // })
+
+
+    // Array.prototype.myFilter = function (callback) {
+    //   var newArr = [];
+    //   for (var i = 0; i < this.length; i++) {
+    //     if (callback(this[i], i, this)) {
+    //       newArr.push(this[i])
+    //     }
+    //   }
+    //   return newArr;
+    // }
+    // var arr = [1, 2, 3, 4];
+    // var result = arr.myFilter(function (item) {
+    //   return item > 2;
+    // })
+
+    // console.log(result);
+
+
+
+    // Array.prototype.myMap = function (callback) {
+    //   var newArr = [];
+    //   for (var i = 0; i < this.length; i++) {
+    //    newArr.push(callback(this[i], i, this))
+    //   }
+    //   return newArr
+    // }
+
+    // var arr = [1, 2, 3, 4];
+    // var result = arr.myMap(function (item) {
+    //   return item * 2;
+    // })
+
+    // console.log(result);
+
+
+    Array.prototype.myReduce = function (callback, val) {
+      var result = (val !== undefined ? val : this[0]);
+      var start = (val !== undefined ? -1 : 0);
+      for (var i = start; i < this.length - 1; i++) {
+        result = callback(result, this[i + 1]);
+      }
+      return result;
+    }
+
+    var arr = [
+      { name: '苹果', price: 5, total: 2 },
+      { name: '香蕉', price: 4, total: 6 },
+      { name: '西瓜', price: 3, total: 3 },
+    ]
+    var result = arr.reduce(function (a, b) {
+      return a + (b.price * b.total);
+    }, 0)
+
+    console.log(result);
+
+
+  </script>
+
+
+</body>
+
+</html>
