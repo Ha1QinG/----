@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 100px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    #box {
+      width: 800px;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    #box th,
+    td {
+      text-align: center;
+      width: 50px;
+      padding: 20px;
+      user-select: none;
+    }
+
+    button {
+      width: 25px;
+      height: 25px;
+      margin-right: 5px;
+    }
+
+    #box th {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .sort::before {
+      content: "▲";
+      position: absolute;
+      right: 8px;
+      top: 18px;
+      font-size: 12px;
+    }
+
+    .sort1::before {
+      color: red;
+    }
+
+    .sort::after {
+      content: "▼";
+      position: absolute;
+      right: 8px;
+      top: 30px;
+      font-size: 12px;
+    }
+
+    .sort2::after {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>学生成绩管理系统</h2>
+  <div>
+    <!-- <input type="search" placeholder="输入学号/姓名" oninput="search(this,'keyword')">
+    <input type="number" placeholder="起始分数" oninput="search(this,'minScore')">
+    <input type="number" placeholder="结束分数" oninput="search(this,'maxScore')">
+    <p></p> -->
+    <table border="1" id="box">
+      <thead>
+        <th id="sort1" class="sort" onclick="orderBy(this,'name','string')">学号</th>
+        <th>姓名</th>
+        <th id="sort2" class="sort" onclick="orderBy(this,'score','number')">得分</th>
+        <th>考试时间</th>
+      </thead>
+      <tbody id="tbody">
+
+      </tbody>
+    </table>
+    <p id="pager"></p>
+
+  </div>
+
+  <script>
+    var data = [
+      { id: 1, no: '20190122', name: '张飞', gender: '男', score: 47, submitdate: '2021-06-05' },
+      { id: 2, no: '20190221', name: '小乔', gender: '女', score: 78, submitdate: '2021-03-02' },
+      { id: 3, no: '20190324', name: '大乔', gender: '女', score: 57, submitdate: '2021-04-01' },
+      { id: 4, no: '20193126', name: '马超', gender: '男', score: 87, submitdate: '2021-07-06' },
+      { id: 5, no: '20194221', name: '貂蝉', gender: '女', score: 97, submitdate: '2021-08-03' },
+      { id: 6, no: '20196121', name: '张飞', gender: '男', score: 67, submitdate: '2021-03-06' },
+      { id: 7, no: '20195123', name: '小乔', gender: '女', score: 98, submitdate: '2021-04-09' },
+      { id: 8, no: '20197124', name: '马超', gender: '男', score: 78, submitdate: '2021-05-13' },
+    ];
+
+
+    // var keyword = '';
+    // var minScore = '';
+    // var maxScore = '';
+
+    // var orderField = 'no'
+    // var orderType = 'string'
+    // var orderMethod = ''
+
+    show()
+
+    //页码书写
+    function show( ) {
+
+      var target = 1;
+      var temp = '';
+      var partSize = 3;         //2个成员为一组
+      var total = data.length;   // 总长度
+      var totalPart = Math.ceil(total / partSize); // 总页数
+
+      //分段截取法
+      var start = (target - 1) * partSize;
+      var end = start + partSize;
+      var pageData = data.slice(start, end);
+
+      for (var i = 0; i < pageData.length; i++) {
+        temp += '<tr>\
+        <td>'+ pageData[i].no + '</td>\
+        <td>'+ pageData[i].name + '</td>\
+        <td>'+ pageData[i].score + '</td>\
+        <td>'+ pageData[i].submitdate + '</td>\
+      </tr>'
+      }
+
+      if (!total) {
+        temp = '<tr><td colspan ="999" align = "center">暂无数据</td></tr>'
+      }
+
+      tbody.innerHTML = temp;
+
+      //页码
+
+      var th1 = document.querySelector('#sort1').className
+      var th2 = document.querySelector('#sort2').className
+
+      var pageTemp = '';
+      //上一页
+      pageTemp += '<button ' + (target == 1 ? 'disabled' : '') + ' onclick="show(' + (th1, th2 == 'sort' ? 'data' : 'newData') + ',' + (target - 1) + ')">&lt;</button>'
+      //页数
+      for (var p = 1; p <= totalPart; p++) {
+        pageTemp += '<button style="color:' + (p == target ? 'red' : '') + '"\
+         onclick="show(' + (th1, th2 == 'sort' ? 'data' : 'newData') + ',' + p + ')">' + p + '</button>'
+      }
+
+      //下一页
+      pageTemp += '<button ' + (target == totalPart ? 'disabled' : '') + ' onclick="show(' + (th1, th2 == 'sort' ? 'data' : 'newData') + ',' + (target + 1) + ')">&gt;</button>'
+
+      pager.innerHTML = pageTemp;
+    }
+
+
+    // // 输入框搜索
+    // function search(input, field) {
+    //   window[field] = input.value.trim();
+    //   show();
+    // }
+
+
+    // // 排序函数
+    // function orderBy(btn, field, type) {
+
+    //   if (btn.className == 'sort') {
+    //     //升序
+    //     btn.className = 'sort asc';
+    //   } else if (btn.className == 'sort asc') {
+    //     //降序
+    //     btn.className = 'sort desc'
+    //   } else {
+    //     //恢复
+    //     btn.className = 'sort'
+    //   }
+
+    //   orderField = field;
+    //   orderType = type;
+    //   orderMethod = btn.className.replace('sort ', '');  // 通过类名替换获得 orderMethod
+
+    //   show();
+
+    // }
+
+
+
+  </script>
+
+
+</body>
+
+</html>

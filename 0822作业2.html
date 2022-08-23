@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 100px;
+    }
+
+    #box {
+      width: 800px;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    #box th,
+    td {
+      text-align: center;
+      width: 50px;
+      padding: 20px;
+      user-select: none;
+    }
+
+    button {
+      width: 25px;
+      height: 25px;
+      margin-right: 5px;
+    }
+
+    #box th {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .sort::before {
+      content: "▲";
+      position: absolute;
+      right: 8px;
+      top: 18px;
+      font-size: 12px;
+    }
+
+    .asc::before {
+      color: red;
+    }
+
+    .sort::after {
+      content: "▼";
+      position: absolute;
+      right: 8px;
+      top: 30px;
+      font-size: 12px;
+    }
+
+    .desc::after {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>学生成绩管理系统</h2>
+  <!-- <div> -->
+  <input type="search" placeholder="输入学号/姓名" oninput="search(this,'keyword')">
+  <input type="number" placeholder="起始分数" oninput="search(this,'minScore')">
+  <input type="number" placeholder="结束分数" oninput="search(this,'maxScore')">
+  <p></p>
+  <table border="1" id="box">
+    <thead>
+      <th id="sort1" class="sort" onclick="orderBy(this,'name','no')">学号</th>
+      <th>姓名</th>
+      <th id="sort2" class="sort" onclick="orderBy(this,'score','number')">得分</th>
+      <th>考试时间</th>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+  </table>
+
+  <p id="pager"></p>
+
+  <script>
+
+
+    var data = [
+      { id: 1, no: '20196122', name: '张飞1', gender: '男', score: 97, submitdate: '2021-06-05' },
+      { id: 2, no: '20180221', name: '小乔2', gender: '女', score: 78, submitdate: '2021-03-02' },
+      { id: 3, no: '20053126', name: '马超3', gender: '男', score: 87, submitdate: '2021-07-06' },
+      { id: 4, no: '23194221', name: '貂蝉4', gender: '女', score: 97, submitdate: '2021-08-03' },
+      { id: 5, no: '20193126', name: '马超5', gender: '男', score: 83, submitdate: '2021-07-06' },
+      { id: 6, no: '20196121', name: '张飞6', gender: '男', score: 67, submitdate: '2021-03-06' },
+      { id: 7, no: '20195123', name: '小乔7', gender: '女', score: 98, submitdate: '2021-04-09' },
+      { id: 8, no: '20194221', name: '貂蝉8', gender: '女', score: 97, submitdate: '2021-08-03' },
+      { id: 9, no: '20190324', name: '大乔9', gender: '女', score: 57, submitdate: '2021-04-01' },
+      { id: 10, no: '20097124', name: '马超10', gender: '男', score: 78, submitdate: '2021-05-13' },
+      { id: 11, no: '20197144', name: '马小超', gender: '男', score: 76, submitdate: '2021-05-23' },
+    ];
+
+    var keyword = '';
+    var minScore = '';
+    var maxScore = '';
+
+    var orderField = 'score'
+    var orderType = 'name'
+    var orderMethod = ''
+
+    var sortPrev = null;
+
+    list();
+
+    function list( target = 1) {
+
+      var th1 = document.querySelector('#sort1').className
+      var th2 = document.querySelector('#sort2').className
+
+      var temp = '';
+      // 搜索结果
+      var searchData = data.filter(function (item) {
+        return (item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+          item.no.includes(keyword)) &&
+          (minScore ? item.score >= minScore : true) &&
+          (maxScore ? item.score <= maxScore : true);
+      })
+
+      // 排序
+      var sortHash = { 'asc': 1, 'desc': -1, '': 1 };
+      searchData.sort(function (a, b) {
+        if (orderType === 'number') {
+          return ((a[orderField] - b[orderField]) * sortHash[orderMethod])
+        } else {
+          return (a[orderType].localeCompare(b[orderType]) * sortHash[orderMethod])
+
+        }
+      })
+
+
+      //分页效果
+      var groupSize = 4;
+      var total = searchData.length;
+      var totalPage = Math.ceil(total / groupSize);
+
+      var start = (target - 1) * groupSize;
+      var end = start + groupSize;
+      var pageData = searchData.slice(start, end);
+
+
+      // 循环得出匹配结果
+      for (var i = 0; i < pageData.length; i++) {
+        temp += '<tr>\
+        <td>'+ pageData[i].no + '</td>\
+        <td>'+ pageData[i].name + '</td>\
+        <td>'+ pageData[i].score + '</td>\
+        <td>'+ pageData[i].submitdate + '</td>\
+        </tr>';
+        tbody.innerHTML = temp;
+      }
+
+      if (pageData.length == 0) {
+        temp = '<tr><td colspan="999">暂无数据</td></tr>'
+        tbody.innerHTML = temp;
+      }
+
+      // 页码
+      var pageTemp = '';
+      // 上一页
+      pageTemp += '<button ' + (target == 1 ? 'disabled' : '') + ' onclick="list(' + (target - 1) + ')">&lt;</button>'
+      //页数
+      for (var p = 1; p <= totalPage; p++) {
+        pageTemp += '<button style="color:' + (p == target ? 'red' : '') + '"\
+         onclick="list('+ p + ')">' + p + '</button>'
+      }
+
+      //下一页
+      pageTemp += '<button ' + (target == totalPage ? 'disabled' : '') + ' onclick="list(' + (target + 1) + ')">&gt;</button>'
+
+      pager.innerHTML = pageTemp;
+
+    }
+
+
+    // 输入框搜索
+    function search(input, field) {
+      window[field] = input.value.trim();
+      list();
+    }
+
+
+    // 排序函数
+    function orderBy(btn, field, type) {
+
+      //确保排序状态唯一  如果上一次th存在，且不是当前th，去除升降序状态
+      if (sortPrev && sortPrev !== btn) sortPrev.className = 'sort';
+      sortPrev = btn;
+
+      if (btn.className == 'sort') {
+        //升序
+        btn.className = 'sort asc';
+      } else if (btn.className == 'sort asc') {
+        //降序
+        btn.className = 'sort desc'
+      } else {
+        //恢复
+        btn.className = 'sort'
+      }
+
+      orderField = field;
+      orderType = type;
+      orderMethod = btn.className.replace('sort ', '');  // 通过类名替换获得 orderMethod
+
+      list();
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>

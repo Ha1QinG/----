@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    var arr = [
+      {
+        id: 1, name: '江西省', children: [
+          {
+            id: 11,
+            name: '南昌市',
+            children: [
+              { id: 111, name: '高新区' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 2, name: '浙江省', children: [
+          {
+            id: 21,
+            name: '温州市',
+            children: [
+              { id: 211, name: '鹿城区' }
+            ]
+          }
+        ]
+      },
+    ];
+
+    //递归找子级id
+    function findChildren(arr, id ,newArr=[]) {
+      for(var i = 0; i<arr.length;i++){
+        if(arr[i].id == id){
+          newArr.push(arr[i].id);
+          if(arr[i].children){
+            findChildren(arr[i].children,arr[i].children.id)
+          }else{
+            continue;
+          }
+        }
+      }
+    }
+
+    console.log(findChildren(arr, 1))
+
+
+  </script>
+
+</body>
+
+</html>
