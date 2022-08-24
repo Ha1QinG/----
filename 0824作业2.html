@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p><label>
+      <input type="checkbox" onchange="checkedAll(this)"> 全选
+    </label></p>
+  <hr>
+  <div id="list"></div>
+
+  <button onclick="getCheckedVal()">取值</button>
+  <button onclick="removeAll()">批量删除</button>
+
+  <script>
+
+    var fruit = ['苹果', '香蕉', '西瓜', '菠萝', '橘子'];
+    var checkedVal = [];
+
+    view(fruit);
+
+    function view(arr = []) {
+      list.innerHTML = arr.reduce(function (temp, val) {
+        return temp + '  <p><label>\
+      <input onchange="idChange(this)" type="checkbox" name="id" value="'+ val + '"> ' + val + '\
+    </label></p>'
+      }, '')
+    }
+
+    // 获取所有选中的复选框的值
+    function getCheckedVal() {
+      checkedVal = [];
+      document.querySelectorAll('[name="id"]:checked').forEach(function (input) {
+        checkedVal.push(input.value)
+      })
+      console.log(checkedVal);
+    }
+
+    function idChange() {
+      getCheckedVal()
+    }
+
+    function checkedAll(input) {
+      document.querySelectorAll('[name="id"]').forEach(function (inputID) {
+        inputID.checked = input.checked;
+      })
+      getCheckedVal();
+    }
+
+
+    function removeAll() {
+      if (confirm('您确定要删除吗？')) {
+        document.querySelectorAll('[name="id"]:checked').forEach(function (item) {
+          var index = fruit.findIndex(function (index) {
+            return item.value == index;
+          })
+          fruit.splice(index, 1);
+        })
+        view(fruit);
+      }
+    }
+
+
+
+
+  </script>
+
+</body>
+
+</html>

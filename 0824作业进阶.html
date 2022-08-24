@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的购物车</title>
+</head>
+
+<body>
+
+  <h2>我的购物车</h2>
+
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>预览图</th>
+        <th>商品标题</th>
+        <th>单价（元）</th>
+        <th>数量</th>
+        <th>小计</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+
+  </table>
+
+  <p>
+    <button onclick="clearAll()">清空购物车</button>
+    <button onclick="location.href='myProduct.html'">继续购物</button>
+    <span>共 <font color="red" id="total">0</font> 件商品，总计：<font color="red" id="allPrice">￥22450.00</font> </span>
+  </p>
+
+
+  <script>
+
+    var localBuyCar = localStorage.getItem('buyCar')
+    var buyCar = localBuyCar ? JSON.parse(localBuyCar) : [];
+
+    view();
+    count();
+
+    function view() {
+
+      tbody.innerHTML = buyCar.reduce(function (temp, item) {
+        return temp + '<tr>\
+        <td><img src="'+ item.src + '" height="40"></td>\
+        <td>'+ item.title + '</td>\
+        <td>\
+          <font color="red">￥'+ item.price.toFixed(2) + '</font>\
+        </td>\
+        <td><input min="1" max="'+ item.total + '" type="number" value="' + item.num + '" style="width:60px;text-align:center;" oninput="edit(this,' + item.id + ')"></td>\
+        <td>\
+          <font color="red">￥'+ (item.price * item.num).toFixed(2) + '</font>\
+        </td>\
+        <td><button onclick="del('+ item.id + ')">移除</button></td>\
+      </tr>'
+      }, '') || '<tr><td colspan="999" align="center">抱歉，暂无商品!</td></tr>'
+    }
+
+    // 统计购物车信息
+    function count() {
+      var sum = 0;
+      var amount = 0;
+      for (var i = 0; i < buyCar.length; i++) {
+        sum += buyCar[i].num;
+        amount += buyCar[i].num * buyCar[i].price;
+      }
+
+      total.innerText = sum;
+      allPrice.innerText = '￥' + amount.toFixed(2);
+
+    }
+
+
+    // 保存本地数据存储 函数
+    function save() {
+      localStorage.setItem('buyCar', JSON.stringify(buyCar));
+    }
+
+    // 清空购物车
+    function clearAll() {
+      if (confirm('您确定要清空所有商品吗？')) {
+        buyCar = []
+
+        view();
+        count();
+        save();
+      }
+    }
+
+    // 移除单项商品
+    function del(id) {
+      if (confirm('您确定要移除当前商品吗？')) {
+        var index = buyCar.findIndex(function (item) {
+          return item.id == id;
+        })
+        buyCar.splice(index, 1);
+
+        view();
+        count();
+        save();
+
+      }
+    }
+
+    // 修改单项商品的数量
+    function edit(input, id) {
+      var index = buyCar.findIndex(function (item) {
+        return item.id == id;
+      })
+      buyCar[index].num = Number(input.value)
+
+      view();
+      count();
+      save();
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>

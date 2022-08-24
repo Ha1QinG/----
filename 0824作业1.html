@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h2>产品选购</h2>
+  <div id="list"></div>
+  <p>
+    <button onclick="location.href='buycart.html'">我的购物车( <font color="red"><b id="total">0</b></font> )</button>
+  </p>
+
+  <script>
+
+    var localBuycart = localStorage.getItem('buycart');
+    var buycart = localBuycart ? JSON.parse(localBuycart) : [];
+
+    var products = [
+      { id: 1, src: 'img/pidai.png', title: '皮带', price: 100, num: 1, total: 10 },
+      { id: 2, src: 'img/eji.png', title: '入耳式金属耳机手机', price: 120, num: 1, total: 20 },
+      { id: 3, src: 'img/bijiben.png', title: '机械革命笔记本', price: 7000, num: 1, total: 50 },
+      { id: 4, src: 'img/shuimitao.png', title: '国产水蜜桃', price: 30, num: 1, total: 30 },
+      { id: 5, src: 'img/xiyiji.png', title: '小天鹅洗衣机', price: 1200, num: 1, total: 26 }
+    ];
+
+    view();
+    count();
+
+    function count() {
+      total.innerHTML = buycart.reduce(function (a, b) {
+        return a + b.num
+      }, 0)
+    }
+
+    function view() {
+      list.innerHTML = products.reduce(function (temp, item) {
+        return temp + '<p>\
+        <img src="'+ item.src + '" width="40" height="40" align="absmiddle">\
+        <span>'+ item.title + '</span>\
+        ~~~~\
+        <font color="red">￥'+ item.price.toFixed(2) + '</font>\
+        ~~~~\
+        <button onclick="addCart('+ item.id + ')">加入购物车</button>\
+      </p>';
+      }, '') || '<p>抱歉，暂无商品！</p>';
+    }
+
+    function addCart(id) {
+      var isExisted = buycart.some(function (item) {
+        return item.id == id;
+      })
+      if (isExisted) {
+        buycart = buycart.map(function (item) {
+          if(item.id == id) item.num +=1;
+          return item;
+        })
+      } else {
+        var row = products.find(function (item) {
+          return item.id === id;
+        })
+        buycart.push(row)
+      }
+      count();
+
+      localStorage.setItem('buycart', JSON.stringify(buycart))
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
