@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+
+    // var obj1 = {a:1,b:2}
+    // var obj2 = {c:3,b:3}
+    // var obj3 = {a:2}
+    // console.log(Object.assign(obj1,obj2,obj3))
+
+    // obj1.a = 4;
+    // console.log(obj1)
+
+
+
+    // var obj = { a: 1 }
+
+    // obj.__proto__.b = 2;
+    // Object.setPrototypeOf(obj,{age:20})
+
+    // console.log(obj);
+
+
+
+    // 同时设置get和set
+    // var info = {
+    //   _age : 20,
+    // };
+    // Object.defineProperty(info,'a',{
+    //   get(){
+    //     console.log('读取了！')
+
+    //     return this._age;       // 20
+    //   },
+    //   set:function(val){
+    //     var arr = Object.keys(info);       // 枚举获得对象的属性
+    //     for(let i = 0; i<arr.length;i++){
+    //       info[arr[i]] = val
+    //     }
+    //     console.log('设置成功！');
+    //   },
+    // })
+
+    var info = {
+      _age: 20,
+    };
+    
+    var arr = Object.keys(info);
+    for (let i = 0; i < arr.length; i++) {
+
+      Object.defineProperty(info, arr[i].slice(1), {
+        get: function () {
+          console.log('读取了！')
+          return this[arr[i]];
+        },
+        set: function (val) {
+          info[arr[i]] = val;
+          console.log('设置成功！');
+        },
+      })
+
+    }
+    console.log(arr[0].slice(1));
+    
+
+  </script>
+
+
+</body>
+
+</html>
