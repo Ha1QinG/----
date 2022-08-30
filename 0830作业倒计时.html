@@ -41,30 +41,30 @@
       var differ = (yourTime - nowtime) / 1000;   // 相差的秒数
 
       // 判断相差时间
-      if (differ > 31536000){   
+      if (differ > 31536000) {
         return '1年前';
-      }else if(differ > 2626560){
+      } else if (differ > 2626560) {
         return '1个月前'
-      }else if(differ > 86400 ){
+      } else if (differ > 86400) {
         return '1天前'
-      }else if(differ > 86400 ){
+      } else if (differ > 86400) {
         return '1个小时前'
-      }else if(differ > 600 ){
+      } else if (differ > 600) {
         return '10分钟前'
-      }else if(differ > 60 ){
+      } else if (differ > 60) {
         return '1分钟前'
-      }else{
+      } else {
         return '刚刚'
       }
     }
 
 
 
-    function jdCountDown( time ){
+    function jdCountDown(time) {
       var nowtime = +new Date();                // 当前时间
       var needtime = +new Date(time);           // 目标时间转时间戳
       var times = (needtime - nowtime) / 1000;  // 相差时间；
-      
+
       var second = parseInt(times % 60);
       second = second < 10 ? "0" + second : second;
       var min = parseInt(times / 60 % 60);
@@ -72,12 +72,12 @@
       var hour = parseInt(times / 60 / 60 % 24);
       hour = hour < 10 ? "0" + hour : hour;
 
-      box.innerHTML =  hour + '小时' + min + '分钟' + second + '秒；';
+      if (times > 0)box.innerHTML = hour + '小时' + min + '分钟' + second + '秒；';
     }
     setInterval(() => {
-      jdCountDown('2022-8-30 21:00')
+      jdCountDown('2022-8-31 00:14')
     }, 1000);
-    
+
 
   </script>
 
