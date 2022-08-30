@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    function isLeapYear() {
+      var year = prompt('请输入年份：');
+      if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+        console.log(year, '是闰年');
+      } else console.log(year, '不是闰年');
+    }
+
+    isLeapYear()
+
+
+    function getEachMonth(year) {
+      var arr = [31,28,31,30,31,30,31,31,30,31,30,31]
+      if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+        // 是闰年
+        arr[1] = 29;
+        return arr
+      } else {
+        // 不是闰年
+        return arr
+      }
+    }
+
+
+  </script>
+
+</body>
+
+</html>

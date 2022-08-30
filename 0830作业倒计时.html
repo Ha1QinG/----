@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2 id="box"></h2>
+  <script>
+
+    // 倒计时
+    function countDown(time) {
+      var nowtime = +new Date();                // 当前时间
+      var needtime = +new Date(time);           // 目标时间转时间戳
+      var times = (needtime - nowtime) / 1000;  // 相差时间；
+
+      var second = parseInt(times % 60);
+      second = second < 10 ? "0" + second : second;
+      var min = parseInt(times / 60 % 60);
+      min = min < 10 ? "0" + min : min;
+      var hour = parseInt(times / 60 / 60 % 24);
+      hour = hour < 10 ? "0" + hour : hour;
+      var date = parseInt(times / 60 / 60 / 24);
+      date = date < 10 ? "0" + date : date;
+      return date + '天' + hour + '小时' + min + '分钟' + second + '秒；';
+    }
+    // var dates = prompt('请输入倒计时的时间：');
+
+    // console.log('倒计时：' + countDown(dates));
+
+    // console.log(+new Date('2022.10.1'));
+
+
+
+    function commentDate(time) {
+      var nowTime = new Date();                   // 当前时间
+      var yourTime = +new Date(time)              // 评论时间
+      var differ = (yourTime - nowtime) / 1000;   // 相差的秒数
+
+      // 判断相差时间
+      if (differ > 31536000){   
+        return '1年前';
+      }else if(differ > 2626560){
+        return '1个月前'
+      }else if(differ > 86400 ){
+        return '1天前'
+      }else if(differ > 86400 ){
+        return '1个小时前'
+      }else if(differ > 600 ){
+        return '10分钟前'
+      }else if(differ > 60 ){
+        return '1分钟前'
+      }else{
+        return '刚刚'
+      }
+    }
+
+
+
+    function jdCountDown( time ){
+      var nowtime = +new Date();                // 当前时间
+      var needtime = +new Date(time);           // 目标时间转时间戳
+      var times = (needtime - nowtime) / 1000;  // 相差时间；
+      
+      var second = parseInt(times % 60);
+      second = second < 10 ? "0" + second : second;
+      var min = parseInt(times / 60 % 60);
+      min = min < 10 ? "0" + min : min;
+      var hour = parseInt(times / 60 / 60 % 24);
+      hour = hour < 10 ? "0" + hour : hour;
+
+      box.innerHTML =  hour + '小时' + min + '分钟' + second + '秒；';
+    }
+    setInterval(() => {
+      jdCountDown('2022-8-30 21:00')
+    }, 1000);
+    
+
+  </script>
+
+</body>
+
+</html>
