@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+    // console.log(/[1-25]/.test('14'));     // 匹配的是1或0 ，不是10 
+
+
+    // // // 经典面试题  替换清空首尾的空格
+    // var str = '\n 11  22 \r 33';
+    // console.log(str);
+    // // console.log( str.trim() )
+    // console.log(str.replace(/^\s+|\s+$/g, ''));
+
+    // 验证二进制
+    // var str = '101011001111'
+    // console.log( /^[01]+$/.test(str) )
+
+    // // 验证金额
+    // var price = 31.03
+    // console.log( /^\d+\.\d{2}$/.test( price ) );
+    
+    // // 验证手机号码
+    // var numb = '13448787390';
+    // console.log( /^[1]\d{10}$/.test( numb ) );
+    
+    // // 验证网址
+    // var url = 'http://';
+    // console.log(/^https?:\/\/./.test(url));
+    
+    // // 验证邮箱
+    // var email = 'a@s'
+    // console.log( /.[@]./.test( email ) );
+    
+    // 验证固定电话
+    var tel1 = '021-12345678'
+    var tel2 = '02187654321'
+    var tel3 = '0973-87654321'
+    var tel4 = '0973-87654322121'
+    console.log( /^\d{3,4}\-?\d{7,8}$/.test( tel ) );
+    
+
+
+
+  </script>
+  
+</body>
+</html>
