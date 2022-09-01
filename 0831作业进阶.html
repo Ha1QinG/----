@@ -195,14 +195,14 @@
         list.forEach(function (item) {
           item.innerHTML = '';
         })
-        // if (dayOfWeek > 0) {
-        //   loop(0, dayOfWeek - 1, function (item) {
-        //     list[item].innerHTML = i
-        //     i++;
-        //     m++;
-        //     list[item].style.opacity = 0.6
-        //   })
-        // }
+        if (dayOfWeek > 0) {
+          loop(0, dayOfWeek - 1, function (item) {
+            list[item].innerHTML = i  
+            i++;
+            m++;
+            list[item].style.opacity = 0.6
+          })
+        }
 
         loop(1, countDay, function (val) {
           list[dayOfWeek + val - 1].innerHTML = val
