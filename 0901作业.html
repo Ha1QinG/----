@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // // console.log(url.match(/age=([^&]+)&/));       // 非贪婪 20
+
+    // var url = 'age=20&name=tony&gender=男'
+
+    // function getParams(url, field) {
+    //   var reg = new RegExp(field+'=([^&]+)')
+    //   return url.match(reg)[1]
+    // }
+
+    // console.log(getParams(url, 'age'));
+    // console.log(getParams(url, 'name'));
+    // console.log(getParams(url, 'gender'));
+
+
+
+
+    var url = 'http://www.baidu.com/product/about/index.html'
+
+    console.log(url.match(/^.+?\/\//)[0])          // http://
+    console.log(url.match(/\/\/(.+?)\//)[1])       // www.baidu.com
+    console.log(url.match(/\w\/(.+)\//)[1])        // product/about
+    console.log(url.match(/\/(\w+\.\w+)$/)[0]);    // /index.html
+    // var arr = [];
+    // var reg = /\/([^\/]+)/g;
+    // var result = null;
+    // while (result = reg.exec(url)) {
+    //   arr.push(result[0]);
+    // }
+    // console.log(arr[3]);                           // /index.html
+
+
+  </script>
+
+</body>
+
+</html>
