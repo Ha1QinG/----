@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #left,
+    #right {
+      display: inline-block;
+      border: 1px solid #cccccc;
+      width: 120px;
+      height: 300px;
+      margin: 30px 40px;
+    }
+
+    #right,
+    .btn {
+      vertical-align: top;
+    }
+
+    .allCheck {
+      background-color: #eee;
+      margin: 0;
+      border-bottom: 1px solid #cccccc;
+      height: 20px;
+      line-height: 20px;
+      padding: 10px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .item {
+      display: inline-block;
+      padding: 10px;
+      margin: 0;
+      width: 100px;
+    }
+
+    .item input:checked {
+      background-color: #1E90FF;
+      color: #ffffff;
+    }
+
+    /* input {
+      display: none;
+    } */
+    button {
+      display: block;
+      margin: 20px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <div id="left">
+      <p class="allCheck"><a href="">全选</a></p>
+      <div id="left_box"></div>
+    </div>
+    <div class="btn">
+      <button onclick="toRight()">&gt;&gt;</button>
+      <button onclick="toLeft()">&lt;&lt;</button>
+    </div>
+    <div id="right">
+      <p class="allCheck"><a href="">全选</a></p>
+      <div id="right_box"></div>
+    </div>
+  </div>
+
+  <script>
+    var data1 = [
+      { id: 1, name: '金齐' },
+      { id: 2, name: '浩天' },
+      { id: 3, name: '梁康' },
+      { id: 4, name: '牛哥' },
+    ]
+    var data2 = [
+      { id: 5, name: '老王' },
+      { id: 6, name: '恩慧' },
+      { id: 7, name: '文睿' },
+    ]
+
+    function view() {
+      left_box.innerHTML = data1.reduce(function (temp, item) {
+        return temp + '<label class="item left_item">\
+          <input name="ipt" type="checkbox" value="'+ item.id + '">' + item.name + '</iniput>\
+        </label>'
+      }, '')
+
+      right_box.innerHTML = data2.reduce(function (temp, item) {
+        return temp + '<label class="item right_item">\
+          <input name="ipt" type="checkbox" value="'+ item.id + '">' + item.name + '</iniput>\
+        </label>'
+      }, '')
+    }
+
+    view();
+    var leftToRight = [];
+    var rightToLeft = [];
+
+    function toRight() {
+      var left_item = document.querySelectorAll('.left_item input');
+
+      left_item.forEach(function (item) {
+        if (item.checked) {
+          leftToRight.push(item.value)
+        }
+      })
+
+      for (var i = 0; i < leftToRight.length; i++) {
+        data1 = data1.filter(function (item) {
+          if (item.id == leftToRight[i]) data2.push(item)
+          return !leftToRight[i].includes(item.id)
+        })
+      }
+      view();
+    }
+
+    function toLeft() {
+      var right_item = document.querySelectorAll('.right_item input');
+
+      right_item.forEach(function (item) {
+        if (item.checked) {
+          rightToLeft.push(item.value)
+        }
+      })
+
+      for (var i = 0; i < rightToLeft.length; i++) {
+        data2 = data2.filter(function (item) {
+          if (item.id == rightToLeft[i]) data1.push(item)
+          return !rightToLeft[i].includes(item.id)
+        })
+      }
+      view();
+    }
+
+
+  </script>
+
+</body>
+
+</html>
