@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    //  10
+    // var a= {
+    //   name:'张三',
+    //   getName:function(){
+    //     console.log(this.name)
+    //   }
+    // }
+    // var b = {name:'李四'}
+
+    // b.getName = a.getName;
+    // b.getName()
+    // a.getName()
+
+
+    // // 11
+    // function Person(){
+    //   this.name = "张三"
+    //   return {
+    //     name:'李四'
+    //   }
+    // }
+
+    // var p1 = new Person();
+    // console.log(p1);
+
+
+    // // 12
+    // var a= {
+    //   fname:'张三',
+    //   getName:function(){
+    //     console.log(this.fname)
+    //   }
+    // }
+    // a.getName();
+    // var getName = a.getName;
+    // console.log(getName)
+    // getName();
+
+
+    // // 13
+    // var foo = 123;
+    // function fn(){
+    //   this.foo = 456;
+    //   console.log(this);
+    //   console.log(foo)
+    // }
+    // fn()
+
+
+    // // 14
+    // window.foo = 123;
+    // function fn(){
+    //   this.foo = 456;
+    //   console.log(this);
+    //   console.log(window.foo)
+    // }
+    // window.fn()
+
+
+    // // 15
+    // a = 1;
+    // function fn() {
+    //   console.log(this.a)
+    // }
+    // const obj = {
+    //   a: 10,
+    //   bar: function () {
+    //     function fn() {
+    //       console.log(this.a)
+    //     }
+    //   }
+    // }
+    // obj.bar();
+
+
+    // // 16
+    // var a = 1;
+    // function fn(){
+    //   var a = 2;
+    //   function inner(){
+    //     console.log(this.a)
+    //   }
+    //   inner();
+    // }
+    // fn();
+
+
+    // // 17
+    // a= 1;
+    // (function(){
+    //   console.log(this);
+    //   console.log(this.a)
+    // }())
+    // function bar(){
+    //   b=2;
+    //   (function(){
+    //     console.log(this);
+    //     console.log(this.b)
+    //   }())
+    // }
+    // bar();
+
+
+    // // 18 
+    // function fn(){
+    //   console.log(this.a)
+    // }
+    // var obj = {a:1}
+    // var a = 2;
+    // fn.bind(obj)
+
+
+    // 19
+    function foo() {
+      console.log(this.a)
+    }
+    function dofoo(fn){
+      console.log(this);
+      fn.call(this);
+    }
+    var obj = {a:1,foo}
+    var a =2;
+    dofoo(obj.foo)
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
