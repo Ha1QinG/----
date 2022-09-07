@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // function myCreate(proto,self){
+    //   function fn(){
+    //     for(var k in self){
+    //       this[k] = self[k]
+    //     }
+    //   }
+    //   fn.prototype = proto;
+    //   return new fn();
+    // }
+
+
+    // function Fater(){}
+    // function Child(){};
+    // Child.prototype = new Fater();
+    // Child.prototype.constructor = Child;
+
+
+    // // 单例模式
+    // function Fn(str) {
+    //   this.name = str;
+    // }
+
+    // Fn.getName = function (name) {
+    //   if (!this.info) {
+    //     this.info = new Fn(name);
+    //   }
+    //   return this.info;
+    // }
+    // var a = Fn.getName('张三')
+    // var b = Fn.getName('李四')
+    // console.log(a,b)      // '张三'  '张三'
+
+
+    // 适配器模式
+    // var a = {
+    //   show: function () {
+    //     console.log('a的视图')
+    //   }
+    // }
+    // var b = {
+    //   view: function () {
+    //     console.log('b的视图')
+    //   }
+    // }
+    // var bAdapter = {
+    //   show: function () {
+    //     return b.view();
+    //   }
+    // }
+
+    // var action = function (obj) {
+    //   if (typeof obj.show === 'function') obj.show();
+    // }
+    // action(a);
+    // action(bAdapter);
+
+
+    // 订阅发布者模式
+    var Event = {
+      task: {},
+
+      on: function (type, callback) {
+        if (!this.task[type]) {
+          this.task[type] = [];
+        }
+        if (typeof callback === 'function') {
+          this.task[type].push(callback)
+        }
+      },
+
+      emit: function () {
+        var type = [].shift.call(arguments)
+        var arr = this.task[type]
+        for (let i = 0; i < arr.length; i++) {
+          if (typeof arr[i] === 'function') {
+            arr[i].apply(this, arguments)
+          }
+        }
+      },
+
+      off: function (type, callback) {
+        if (!callback) {
+          this.task[type] = [];
+        } else {
+          var arr = this.task[type]
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === callback) {
+              arr.splice(i, 1)
+              break;
+            }
+          }
+        }
+      },
+
+    }
+
+    function fn1(msg) {
+      console.log('第一个订阅', msg)
+    }
+    Event.on('牛奶', fn1)
+
+    setInterval(() => {
+      Event.emit('牛奶', '您的牛奶已送到')
+    }, 3000);
+
+    setTimeout(() => {
+      Event.off('牛奶', fn1)
+    }, 10000);
+
+
+
+  </script>
+
+</body>
+
+</html>
