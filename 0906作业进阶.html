@@ -43,7 +43,7 @@
     getName();    //2
     new foo.getName();    // 
     new foo().getName();  // 实例不能调用父类中的方法，只能调用原型中的方法 原型输出3
-    new new foo().getName()   //  这个的原型是18行的函数，输出2
+    new new foo().getName()   //  该对象的原型是从new foo().getName() 中继承的，输出3
 
 
   </script>
