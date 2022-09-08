@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <p>手机
+      <input type="text" id="telNumber">
+    </p>
+    <p>验证码
+      <input type="text" onclick="check()" id="input">
+      <button id="btn">发送</button>
+    </p>
+  </div>
+
+  <script>
+    var tel = null;
+    var reg = new RegExp(/^[1]\d{10}$/);
+    var isTrue = null;
+    var lastTime = 0;
+    var timer = 60;
+    var doing = JSON.parse(localStorage.getItem('rightTime'));
+
+    save();
+
+    function check() {
+      tel = telNumber.value;
+      isTrue = reg.test(tel)
+
+      var setTime = null
+      if (isTrue && doing == timer && lastTime < 3) {
+        lastTime++;
+        btn.disabled = true;
+        input.setAttribute('onclick', '')
+        // 倒计时
+        setTime = setInterval(() => {
+          timer--;
+          save()
+          btn.innerText = timer;
+          // 清除倒计时
+          if (timer == 0) {
+            clearTimeout(setTime);
+            input.setAttribute('onclick', 'check()')
+            btn.disabled = false;
+            btn.innerText = '重新发送';
+          }
+        }, 1000)
+      } else if (!isTrue) {
+        alert('请输入正确的手机号')
+        telNumber.focus();
+      } else if (lastTime >= 3) {
+        alert('对不起，超过了今天发送的总数')
+      } else if (doing !== timer) {
+        alert('对不起，已经给您发送过验证码')
+      }
+    }
+
+    function save() {
+      localStorage.setItem('rightTime', JSON.stringify(timer))
+    }
+
+
+
+
+  </script>
+
+</body>
+
+</html>

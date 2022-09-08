@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">提交</button>
+
+  <script>
+
+    btn.onclick = function () {
+      this.innerText = '提交中'
+      this.disabled = true;
+      var context = this;
+      setTimeout(function (status) {
+        if (status === 200) {
+          context.innerText = '提交'
+          context.disabled = false;
+        }
+      }, 1000, 200)
+    }
+
+
+
+    function myDebounce(callback, delay) {
+      var timer = null;
+      return function () {
+        var context = this;
+        var args = arguments;
+        if (timer) {
+          clearTimeout(timer)
+        }
+        timer = setTimeout(function () {
+          callback.apply(context, args)
+        }, delay)
+      }
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>
