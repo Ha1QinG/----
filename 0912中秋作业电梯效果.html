@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电梯模拟运行</title>
+</head>
+
+<body>
+  </div>
+  <form name="form1" method="post" action="">
+    <p align="center">电梯现在位置<span id="now_position"></span>
+      层</p>
+    <p align="center">
+      <input name="Submit10" type="button" id="Submit10" value="10" onclick="goto(this);">
+
+      <input name="Submit20" type="button" id="Submit20" value="20" onclick="goto(this);">
+    </p>
+    <p align="center">
+      <input name="Submit9" type="button" id="Submit9" value=" 9" onclick="goto(this);">
+      <input name="Submit19" type="button" id="Submit19" value="19" onclick="goto(this);">
+    </p>
+    <p align="center"> <input name="Submit8" type="button" id="Submit8" value=" 8" onclick="goto(this);">
+      <input name="Submit18" type="button" id="Submit18" value="18" onclick="goto(this);">
+    </p>
+    <p align="center"> <input name="Submit7" type="button" id="Submit7" value=" 7" onclick="goto(this);">
+      <input name="Submit17" type="button" id="Submit17" value="17" onclick="goto(this);">
+    </p>
+    <p align="center"> <input name="Submit6" type="button" id="Submit6" value=" 6" onclick="goto(this);">
+      <input name="Submit16" type="button" id="Submit16" value="16" onclick="goto(this);">
+    </p>
+    <p align="center"> <input name="Submit5" type="button" id="Submit5" value=" 5" onclick="goto(this);">
+      <input name="Submit15" type="button" id="Submit15" value="15" onclick="goto(this);">
+    </p>
+    <p align="center"> <input name="Submit4" type="button" id="Submit4" value=" 4" onclick="goto(this);">
+      <input name="Submit14" type="button" id="Submit14" value="14" onclick="goto(this);">
+    </p>
+    <p align="center"> <input name="Submit3" type="button" id="Submit3" value=" 3" onclick="goto(this);">
+      <input name="Submit13" type="button" id="Submit13" value="13" onclick="goto(this);">
+    </p>
+    <p align="center"> <input name="Submit2" type="button" id="Submit2" value=" 2" onclick="goto(this);">
+      <input name="Submit12" type="button" id="Submit12" value="12" onclick="goto(this);">
+    </p>
+    <p align="center"> <input name="Submit1" type="button" id="Submit1" value=" 1" onclick="goto(this);">
+      <input name="Submit11" type="button" id="Submit11" value="11" onclick="goto(this);">
+    </p>
+  </form>
+
+</body>
+
+
+<script>
+
+  var now_value = 1;//电梯当前楼层
+  var plan_value = now_value;//电梯初始计划停靠楼层
+  var Floor_status = 0;//电梯当前状态，停
+  var Floor_num = 20;
+  var Floor_plan = new Array();
+  // 电梯模拟运行，Write by Showlin (fzsalx@163.com)-->
+  function SetLight(num) { //点亮某层的灯
+    var obj;
+    var tmpstring;
+    tmpstring = "Submit" + num.toString();
+    obj = document.getElementById(tmpstring);
+    document.getElementById("now_position").innerText = now_value;
+    obj.style.background = "#ffff00";
+  }
+
+  function SetUnLight(num) { //熄灭某层的灯
+    var obj;
+    var tmpstring;
+    tmpstring = "Submit" + num.toString();
+    obj = document.getElementById(tmpstring);
+    obj.style.background = "#d4d0c8";
+  }
+
+  function SetRed(num) {//到达提示
+    var obj;
+    var tmpstring;
+    tmpstring = "Submit" + num.toString();
+    obj = document.getElementById(tmpstring);
+    obj.style.background = "#ff0000";
+  }
+
+  function goto(obj) {//按按钮之后
+    var i;
+    var tmpobj;
+    var tmpstring;
+    var tmpvalue;
+    tmpvalue = parseInt(obj.value);
+    SetIsPlan(tmpvalue);  //点亮按下的楼层灯
+    if (tmpvalue == now_value) return; //终点和起点一致不控制
+    if (Floor_status == 0) {
+      plan_value = tmpvalue;//设置电梯初始运行终点
+      if (plan_value > now_value) {//上行
+        Floor_status = 1;
+        up();
+      } else {
+        Floor_status = -1;
+        down();
+      }
+    } else {
+      AddPlan(obj.value);//添加到计划停靠表中等待
+    }
+
+  }
+
+  function up() {//上行
+    SetUnLight(now_value);//设置离开的楼层显示状态
+    now_value++;//上行
+    SetLight(now_value);//顶端显示状态
+    if (Floor_plan.length == 0) {//计划停靠表为空
+      if (plan_value != now_value) {//若未抵达延时继续上行
+        setTimeout("up()", 1000);
+      } else {
+        DelAll();//所有灯灭；
+        SetLight(now_value);
+        Floor_status = 0;//设置电梯为停
+      }
+    } else {
+      if (Floor_plan[Floor_plan.length - 1] == now_value) { //判断是否到了下一个停靠点
+        SetRed(now_value);//设置停靠点状态
+        DelPlan();//删除最后一个停靠点的信息
+        if (Floor_plan.length == 0) {//判断停靠计划表是否为空
+          DelAll();//所有灯灭；
+          SetLight(now_value);
+          Floor_status = 0;//停
+        } else {
+          setTimeout("up()", 2000);//继续
+        }
+      } else {//没到下一个停靠点
+        setTimeout("up()", 1000);
+      }
+    }
+  }
+
+  function down() {//下行
+    SetUnLight(now_value);//设置离开的楼层显示状态
+    now_value--;//下行
+    SetLight(now_value);//顶端显示状态
+    if (Floor_plan.length == 0) {//计划停靠表为空
+      if (plan_value != now_value) {//若未抵达延时继续上行
+        setTimeout("down()", 1000);
+      } else {
+        DelAll();//所有灯灭；
+        SetLight(now_value);
+        Floor_status = 0;//设置电梯为停
+      }
+    } else {
+      if (Floor_plan[Floor_plan.length - 1] == now_value) { //判断是否到了下一个停靠点
+        SetRed(now_value);//设置停靠点状态
+        DelPlan();//删除最后一个停靠点的信息
+        if (Floor_plan.length == 0) {//判断停靠计划表是否为空
+          DelAll();//所有灯灭；
+          SetLight(now_value);
+          Floor_status = 0;//停
+        } else {
+          setTimeout("down()", 2000);//继续
+        }
+      } else {//没到下一个停靠点
+        setTimeout("down()", 1000);
+      }
+    }
+  }
+  function AddPlan(num) {//添加计划停靠表
+    if (Floor_status * num < now_value * Floor_status) return;//按钮与电梯方向相反则不予理会
+    if (Floor_plan.length == 0) {//计划表为空
+      if (Floor_status * num > plan_value * Floor_status) {
+        Floor_plan[0] = num;
+        Floor_plan[1] = plan_value;
+      }
+      if (Floor_status * num < plan_value * Floor_status) {
+        Floor_plan[1] = num;
+        Floor_plan[0] = plan_value;
+      }
+    } else {
+      var i;
+      var j;
+      for (i = 0; i < Floor_plan.length; i++) {
+        if (num == Floor_plan[i]) return;
+        if (Floor_status * num > Floor_plan[i] * Floor_status) {//找出插入的位置
+          for (j = Floor_plan.length; j > i; j--) { Floor_plan[j] = Floor_plan[j - 1]; }
+          Floor_plan[i] = num;
+          break;
+        }
+      }
+      if (i == Floor_plan.length) Floor_plan[i] = num; //插入到数组尾部
+    }
+
+  }
+
+  function DelPlan() {//去除计划表最后一项，停靠点
+    Floor_plan.length--;
+  }
+
+
+  function SetIsPlan(num) {//设置按下按钮的灯
+    var obj;
+    var tmpstring;
+    tmpstring = "Submit" + num.toString();
+    obj = document.getElementById(tmpstring);
+    obj.style.background = "#66ffff";
+  }
+
+  function DelAll() {//熄灭所有灯
+    var i = 1
+    for (i = 1; i <= Floor_num; i++)  SetUnLight(i);
+  }
+</script>
+
+</html>
