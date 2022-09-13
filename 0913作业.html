@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <ul id="nav">
+    <li>首页</li>
+    <li>关于</li>
+    <li>产品</li>
+  </ul>
+
+  <script>
+
+    // // parentNode 直接父级节点
+    // console.log(document.documentElement.parentNode)    // 返回文档节点
+
+    // // parentElement 直接父元素
+    // console.log(document.documentElement.parentElement) // 返回null，因为没有html元素
+
+    var ul = document.querySelector('#nav');
+    var lis = ul.childNodes;
+    var arr = [];
+    for(var i = 0;i<lis.length;i++){
+      if(lis[i].nodeType === 1 ){
+        arr.push(lis[i])
+      }
+    }
+
+    console.log(arr)
+
+
+  </script>
+
+</body>
+
+</html>

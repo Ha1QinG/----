@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <ul>
+    <li>首页</li>
+    <li>关于</li>
+    <li>产品</li>
+    <li id="nav">新闻</li>
+    <li>联系</li>
+  </ul>
+
+  <script>
+
+    // function nextAll() {
+    //   var nav = document.querySelector('#nav')
+    //   var nextNode = nav.nextElementSibling;
+    //   var arr = [];
+
+    //   while (nextNode) {
+    //     arr.push(nextNode);
+    //     nextNode = nextNode.nextElementSibling;
+    //   }
+    //   return arr
+    // }
+
+
+    // function prevAll() {
+    //     var nav = document.querySelector('#nav')
+    //     var prevNode = nav.previousElementSibling;
+    //     var arr = [];
+
+    //     while (prevNode) {
+    //       arr.push(prevNode);
+    //       prevNode = prevNode.previousElementSibling;
+    //     }
+    //     return arr
+    // }
+    // console.log(prevAll())
+
+
+    function siblings() {
+      var nav = document.querySelector('#nav')
+      var arr = [];
+      var nextNode = nav.nextElementSibling;
+      var prevNode = nav.previousElementSibling;
+      while (nextNode || prevNode) {
+        if (prevNode) {
+          arr.push(prevNode);
+          prevNode = prevNode.previousElementSibling;
+        }
+        if (nextNode) {
+          arr.push(nextNode);
+          nextNode = nextNode.nextElementSibling;
+        }
+      }
+      return arr
+    }
+    console.log(siblings())
+
+
+  </script>
+
+</body>
+
+</html>
