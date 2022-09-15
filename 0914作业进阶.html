@@ -88,15 +88,18 @@
     var edit = document.createElement('button') // 创建修改键
     var del = document.createElement('button')  // 创建删除键
 
+    // 修改需要的
     var editURLName = document.createElement('input')
     var editURL = document.createElement('input')
     var editScore = select.cloneNode(true)
+
     btns.appendChild(edit)
     btns.appendChild(del)
 
     tableURLName.innerText = urlName.value;
     tableURL.innerText = url.value;
-    score.innerText = star
+    var checked = select.selected;
+    score.innerText = checked.innerText;
     edit.innerText = '修改'
 
     edit.addEventListener('click', function change() {
