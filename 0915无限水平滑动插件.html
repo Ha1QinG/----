@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/slide.css">
+</head>
+
+<body>
+
+  <div class="box" id="box">
+    <ul id="ul">
+      <li style="background-color: rgb(35, 224, 209);width: 100px;">1</li>
+      <li style="background-color: pink;">2</li>
+      <li style="background-color: green;">3</li>
+      <li style="background-color: skyblue;">4</li>
+      <li style="background-color: rgb(122, 122, 20);">5</li>
+      <li style="background-color: rgb(67, 28, 104);">6</li>
+    </ul>
+    <!-- <button class="prevbtn" onclick="prev()">&lt;</button>
+    <button class="nextbtn" onclick="next()">&gt;</button> -->
+
+    <!-- <p class="pageBtn">
+      <button name="page" value="1" onclick="jump(this)">1</button>
+      <button name="page" value="2" onclick="jump(this)">2</button>
+      <button name="page" value="3" onclick="jump(this)">3</button>
+    </p> -->
+
+
+  </div>
+
+  <!-- 封装成slide插件， 实现自动播放、左右按钮、页码、划过暂停、划出播放、播放时间间隔 -->
+
+  <script src="js/slide.js"></script>
+
+  <script>
+
+    new Slide('#box', { group: 2, mouse: true })
+
+  </script>
+
+</body>
+
+</html>

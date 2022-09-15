@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    var data1 = 'person'
+    var data2 = 'age=24&name=tony&gender=boy'
+
+    // 参数：cookie名称，cookie的值，缓存时间
+    function setCookie(name, value, date = 1000) {
+      document.cookie = name + '=' + value + ';expirse=' + new Date(Date.now() + date).toGMTString();
+    }
+    setCookie(data1, data2, 10000)
+
+
+    // 参数：cookie名称，需要的值
+    function getCookie(name, value) {
+      var need = new RegExp(value+'=([^&]*)');
+      console.log(document.cookie.match(need)[1])
+    }
+    getCookie(data1, 'age')
+
+
+    // 参数：需要移除的cookie名称
+    function delCookie(name){
+      document.cookie = name +'= ;eexpirse=' +new Date(0).toGMTString();
+    }
+    // delCookie(data1)
+
+
+  </script>
+
+</body>
+
+</html>
