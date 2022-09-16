@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">按钮</button>
+
+  <script>
+
+    // 方法一
+    var once = true;
+    btn.onclick = function () {
+      if (once) {
+        console.log('触发了')
+        once = false;
+      } else {
+        return
+      }
+    }
+
+    // 方法二
+    btn.onclick = function () {
+      console.log('触发了')
+      btn.onclick = null;
+    }
+
+    // 方法三
+    btn.addEventListener('click', function () {
+      console.log('触发了')
+    }, { once: true, })
+
+    // 方法四
+    btn.addEventListener('click',function fn(){
+      console.log('触发了')
+      btn.removeEventListener('click',fn)
+    })
+
+
+  </script>
+
+
+</body>
+
+</html>

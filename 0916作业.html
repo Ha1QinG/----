@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button id="btn1">添加事件</button>
+  <button id="btn2">移除事件</button>
+  <button id="btn3">事件代理</button>
+
+
+  <script>
+
+    function fn1(){
+      console.log('aaa')
+    }
+    function fn2(){
+      console.log('bbb')
+    }
+
+    // 添加事件
+    btn1.addEventListener('click',fn1)
+    btn1.addEventListener('click',fn2)
+
+    // 移除事件
+    btn2.addEventListener('click',function(){
+      btn1.removeEventListener('click',fn1)
+    })
+
+    // 事件代理
+    btn3.addEventListener('click',function(){
+      var event = new Event('click')
+      btn1.dispatchEvent(event)
+    })
+
+
+  </script>
+
+</body>
+</html>
