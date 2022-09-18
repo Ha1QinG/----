@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="tab.css">
+</head>
+
+<body>
+
+  <div id="tab1">
+    <input type="radio" id="home"></input>
+    <label class="" for="home">网站首页1</label>
+    <input type="radio" id="about"></input>
+    <label for="about">关于我们1</label>
+    <input type="radio" id="link"></input>
+    <label for="link">联系我们1 </label>
+    <div class="content home ">网站首页内容1</div>
+    <div class="content about">关于我们内容1</div>
+    <div class="content link">联系我们内容1</div>
+  </div>
+
+
+  <div id="tab2">
+    <input type="radio" id="home"></input>
+    <label class="" for="home">网站首页2</label>
+    <input type="radio" id="about"></input>
+    <label for="about">关于我们2</label>
+    <input type="radio" id="link"></input>
+    <label for="link">联系我们2 </label>
+    <div class="content home ">网站首页内容2</div>
+    <div class="content about">关于我们内容2</div>
+    <div class="content link">联系我们内容2</div>
+  </div>
+
+
+</body>
+
+<script src="tab.js"></script>
+
+<script>
+    new TAB('#tab1', {
+      index: 2,
+    });
+
+  new TAB('#tab2', {
+    index: 1,
+    event: 'mouseenter',
+  });
+
+</script>
+
+</html>

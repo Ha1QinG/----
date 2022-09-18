@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 50px;
+}
+
+#tab1 ,
+#tab2{
+  border: 1px solid #cccccc;
+  width: 600px;
+  margin-bottom: 20px;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  background-color: #ccc;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.checked {
+  background-color: #fff;
+}
+
+.content {
+  height: 50px;
+  line-height: 50px;
+  display: none;
+}
+.hidden{
+  display: none;
+}
+
+.visiable {
+  display: block;
+}
