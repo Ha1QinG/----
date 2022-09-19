@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tips {
+      color: red;
+    }
+
+    input {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form>
+    <div class="group">
+      <input type="text" required maxlength="20" minlength="2" email="true" rule="">
+      <p class="tips">必填项</p>
+    </div>
+  </form>
+
+
+  <script>
+
+    +function () {
+
+      var group = document.querySelector('.group')
+      var input = group.querySelector('input')
+      var p = group.querySelector('p')
+
+      p.style.display = 'none';
+
+      input.addEventListener('blur', function () {
+        var val = input.value
+        var maxlength = input.getAttribute('maxlength')
+        var minlength = input.getAttribute('minlength')
+        var email = input.getAttribute('email')
+        var rule = input.getAttribute('rule')
+
+        // 必填
+        if (input.required && val === '') {
+          p.style.display = 'block'
+          input.focus();
+        }
+
+
+        // 最小长度限制
+        if (minlength && val.length < minlength) {
+          input.focus();
+          input.style = "border-color: red;"
+          p.style.display = 'block'
+          p.innerText = '长度不应小于' + minlength;
+        } else {
+
+          // 验证邮箱
+          var reg1 = new RegExp(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(com|cn|net)$/)
+          var result1 = reg1.test(val)
+          if (email && !result1) {
+            input.focus();
+            input.style = "border-color: blue;"
+            p.style.display = 'block'
+            p.innerText = '请输入正确的邮箱地址！';
+          } else {
+
+
+            // 验证自定义正则表达式
+            var reg2 = new RegExp(rule)
+            var result2 = reg2.test(val)
+            if (rule && !result1) {
+              input.focus();
+              input.style = "border-color: red;"
+              p.style.display = 'block'
+              p.innerText = '请输入匹配的字符！';
+            } else {
+              p.innerText = '';
+            }
+
+          }
+
+        }
+
+      })
+
+
+    }();
+
+  </script>
+
+
+</body>
+
+</html>

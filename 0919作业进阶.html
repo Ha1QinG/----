@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <input type="number" min="1" max="10" disabled>
+  <input type="number" min="1" max="10" >
+
+
+  <script>
+
+    +function () {
+
+      var inputs = document.querySelectorAll('[type="number"]')
+
+      inputs.forEach(function (item) {
+        item.style.display = 'none'
+        var div = document.createElement('div')
+        var button1 = document.createElement('button')
+        var button2 = document.createElement('button')
+        var input = document.createElement('input')
+
+        div.style = "font-size: 0;width:150px;height:30px;margin:10px;display:inline-block";
+        button1.style = button2.style = "font-size: 20px;background-color: #F5F7FA;width: 30px;height: 30px;border: none;cursor: pointer; float: left; "
+        input.style = "text-align:center; width: 80px;height: 30px;border: 1px solid #E6E9EE;box-sizing: border-box;outline: none;float: left;  "
+
+        button1.innerText = '+'
+        button2.innerText = '-'
+
+        input.type = 'text'
+        input.disabled = true;
+
+        div.append(button2, input, button1)
+        item.parentElement.insertBefore(div, item);
+
+        input.value = (item.min ? item.min : 1);
+
+        if(item.disabled){
+          input.disabled = true
+          button1.disabled = true
+          button2.disabled = true
+        }
+        if (input.value == item.max) button1.disabled = true;
+        if (input.value == item.min) button2.disabled = true;
+
+        button1.addEventListener('click', function () {
+          input.value++
+          if (item.max && input.value == item.max) {
+            button1.disabled = true;
+            return;
+          }
+          button2.disabled = false;
+        })
+
+        button2.addEventListener('click', function () {
+          input.value--;
+          if (item.min && input.value == item.min) {
+            button2.disabled = true;
+            return;
+          }
+          button1.disabled = false;
+        })
+
+      })
+
+
+
+    }();
+
+  </script>
+
+
+</body>
+
+</html>

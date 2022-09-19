@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      display: inline-block;
+    }
+    #box{
+      width: 200px;
+      height: 200px;
+      margin: 30px;
+      padding: 20px;
+      border: 5px solid red;
+      white-space: nowrap;
+      overflow: auto;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- <div>111</div> -->
+  <div id="box">
+    hello world！
+    hello world！
+    hello world！
+    hello world！
+    hello world！
+  </div>
+
+  <ul><li>11</li></ul>
+  <table><tr><td>111</td></tr></table>
+
+  <script>
+
+    // console.log( box.clientLeft )
+    
+    // console.log( box.scrollLeft )
+
+    // console.log( box.offsetLeft )
+
+
+    // // 方法一 (不适用多层定位嵌套)
+    // console.log(box.offsetTop)
+
+    // // 方法二
+    // console.log(box.getBoundingClientRect().top)
+
+    // // 方法三
+    // console.log(box.getClientRects()[0].top)
+
+  </script>
+
+</body>
+</html>
