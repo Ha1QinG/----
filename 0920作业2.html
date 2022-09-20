@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="box" style="width: 200px;height: 200px; background-color: #ddd;"></div>
+
+  <script>
+
+    box.onclick = function(event){
+      event.stopPropagation();
+      console.log('在框内')
+    }
+    document.onclick = function(){
+      console.log('在框外')
+    }
+
+    document.onclick = function(event){
+      if(box.contains(event.target)){
+        console.log('在框内')
+      }else{
+        console.log('在框外') 
+      }
+    }
+
+    // 检测鼠标的坐标
+    document.onclick = function(event){
+      if(event.clientX -8 < box.offsetWidth && event.clientY -8 < box.offsetHeight){
+        console.log('在框内')
+      }else{
+        console.log('在框外') 
+      }
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #ccc;
+    }
+
+    #menu {
+      width: 100px;
+      height: 60px;
+      background-color: #fff;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      display: none;
+      /* visibility: hidden; */
+    }
+
+    #menu p {
+      padding: 0 10px;
+      font-size: 16px;
+      margin: 0;
+      -webkit-user-select: none;
+    }
+
+    #menu p:hover {
+      background-color: #0086FF;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box">
+    <button id="set">设置</button>
+    <button id="inner">管理</button>
+  </div>
+
+  <div id="menu">
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+
+  <script>
+
+    set.oncontextmenu = function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+      if (set.contains(event.target)) {
+        menu.children[0].innerText = '新建'
+        menu.children[1].innerText = '修改'
+        menu.children[2].innerText = '删除'
+        menu.style.display = 'block';
+        var x = event.clientX;
+        var y = event.clientY;
+        menu.style = 'left:' + x + 'px;top:' + y + 'px; ';
+        menu.style.display = 'block';
+      }
+    }
+
+    inner.oncontextmenu = function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+      if (inner.contains(event.target)) {
+        menu.children[0].innerText = '配置'
+        menu.children[1].innerText = '主题'
+        menu.children[2].innerText = '系统'
+        menu.style.display = 'block';
+        var x = event.clientX;
+        var y = event.clientY;
+        menu.style = 'left:' + x + 'px;top:' + y + 'px; ';
+        menu.style.display = 'block';
+      }
+    }
+
+    document.oncontextmenu = function (event) {
+      event.preventDefault();
+      menu.children[0].innerText = '系统'
+      menu.children[1].innerText = '帮助'
+      menu.children[2].innerText = '关于'
+      var x = event.clientX;
+      var y = event.clientY;
+      menu.style = 'left:' + x + 'px;top:' + y + 'px; ';
+      menu.style.display = 'block';
+    }
+
+    document.onclick = function (event) {
+      menu.style = 'display:"none"'
+    }
+
+
+  </script>
+
+</body>
+
+</html>
