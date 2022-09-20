@@ -47,43 +47,41 @@
         if (input.required && val === '') {
           p.style.display = 'block'
           input.focus();
-        }
+        } else
 
-
-        // 最小长度限制
-        if (minlength && val.length < minlength) {
-          input.focus();
-          input.style = "border-color: red;"
-          p.style.display = 'block'
-          p.innerText = '长度不应小于' + minlength;
-        } else {
-
-          // 验证邮箱
-          var reg1 = new RegExp(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(com|cn|net)$/)
-          var result1 = reg1.test(val)
-          if (email && !result1) {
+          // 最小长度限制
+          if (minlength && val.length < minlength) {
             input.focus();
-            input.style = "border-color: blue;"
+            input.style = "border-color: red;"
             p.style.display = 'block'
-            p.innerText = '请输入正确的邮箱地址！';
+            p.innerText = '长度不应小于' + minlength;
           } else {
 
-
-            // 验证自定义正则表达式
-            var reg2 = new RegExp(rule)
-            var result2 = reg2.test(val)
-            if (rule && !result1) {
+            // 验证邮箱
+            var reg1 = new RegExp(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(com|cn|net)$/)
+            var result1 = reg1.test(val)
+            if (email && !result1) {
               input.focus();
-              input.style = "border-color: red;"
+              input.style = "border-color: blue;"
               p.style.display = 'block'
-              p.innerText = '请输入匹配的字符！';
+              p.innerText = '请输入正确的邮箱地址！';
             } else {
-              p.innerText = '';
+
+
+              // 验证自定义正则表达式
+              var reg2 = new RegExp(rule)
+              var result2 = reg2.test(val)
+              if (rule && !result1) {
+                input.focus();
+                input.style = "border-color: red;"
+                p.style.display = 'block'
+                p.innerText = '请输入匹配的字符！';
+              } else {
+                p.innerText = '';
+              }
+
             }
-
           }
-
-        }
 
       })
 
