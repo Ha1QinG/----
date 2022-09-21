@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>拖拽缩放</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0
+  }
+ 
+  #box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #4bb0bb
+  }
+ 
+  #drag {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background: #691fff;
+    cursor: move;
+  }
+ 
+  #scale {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background: #ffa500;
+    cursor: se-resize;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+</style>
+ 
+<body>
+  <div id="box">
+    <div id="drag">
+      <div id="scale"></div>
+    </div>
+  </div>
+</body>
+<script>
+ 
+  window.onload = function () {
+    var box = document.getElementById("box")
+    var drag = document.getElementById("drag")
+    var scale = document.getElementById("scale")
+    // mousedown mousemove mouseup
+    dragTool(drag)
+    scaleTool(drag, scale, box)
+    // 拖拽方法
+    function dragTool(node) {
+      node.onmousedown = function (ev) {
+        // 浏览器兼容处理
+        var e = ev || window.event;
+        // 鼠标按下记录相对位置
+        // 水平方向都距离 = 当前鼠标左边的距离 - 被拖拽元素距离左边的距离
+        var offsetX = e.clientX - node.offsetLeft;
+        // 垂直方向都距离 = 当前鼠标都上边的距离 - 被拖拽元素距离距离的距离
+        var offsetY = e.clientY - node.offsetTop;
+        // 鼠标移动和被拖拽的元素是相对的 这里是鼠标拖拽的物体在整个页面上移动 所以
+        // move加在document上
+        document.onmousemove = function (ev) {
+          // 当前鼠标的事件对象
+          var e = ev || window.event;
+          // 定义 currentLeft = 当前鼠标位置 - 距离左边的距离
+          var currentLeft = e.clientX - offsetX;
+          // 定义 currentTop = 当前鼠标上边位置 - 距离上边的距离
+          var currentTop = e.clientY - offsetY
+          // 限制左出界 最左是 0 
+          if (currentLeft <= 0) {
+            currentLeft = 0;
+          }
+          // 当前窗口的宽 浏览器兼容
+          var windowWidth = document.documentElement.clientWidth || document.body.clientWidth;
+          // 限制右边出界 如果大于当前窗口的宽 那么就让它等于当前窗口的宽减去当前元素的offsetWidth 也就是留在原地
+          if (currentLeft >= windowWidth - node.offsetWidth) {
+            currentLeft = windowWidth - node.offsetWidth;
+          }
+          // 设置上出界 最上边是 0 
+          if (currentTop <= 0) {
+            currentTop = 0;
+          }
+          // 当前窗口的高 浏览器兼容
+          var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+          // 限制下边出界 如果大于当前窗口的高 减去 本身的高 那么就让它等于 当前窗口的高减去本身的高
+          if (currentTop >= windowHeight - node.offsetHeight) {
+            currentTop = windowHeight - node.offsetHeight;
+          }
+          // 当前被拖拽元素的 left 值 等于上面计算出的 currentLeft
+          node.style.left = currentLeft + 'px';
+          // 当前被拖拽元素的 top 值 等于上面计算出的 currentTop
+          node.style.top = currentTop + 'px';
+        }
+      }
+      // 鼠标弹起取消拖拽 这里添加到 node 元素对象也可以的
+      document.onmouseup = function () {
+        document.onmousemove = null;
+      }
+    }
+ 
+    // 缩放
+    function scaleTool(drag, scale, box) {
+      scale.onmousedown = function (e) {
+        //阻止冒泡 避免缩放触发移动事件
+        e.stopPropagation()
+        // 取消事件的默认动作
+        e.preventDefault()
+        // 定义position
+        var position = {
+          'w': drag.offsetWidth, // 被缩放元素的offsetWidth
+          'h': drag.offsetHeight, // 被缩放元素的offsetHeight
+          'x': e.clientX, // 当前窗口鼠标指针的水平坐标
+          'y': e.clientY, // 当前窗口鼠标指针的垂直坐标
+        }
+        drag.onmousemove = function (ev) {
+          ev.preventDefault()
+          // 设置最大缩放为30*30 Math.max取最大值 
+          var w = Math.max(30, ev.clientX - position.x + position.w)
+          var h = Math.max(30, ev.clientY - position.y + position.h)
+ 
+          // 设置最大的宽高
+          w = w >= box.offsetWidth - drag.offsetLeft ? box.offsetWidth - drag.offsetLeft : w;
+          h = h >= box.offsetHeight - drag.offsetTop ? box.offsetHeight - drag.offsetTop : h;
+          drag.style.width = w + 'px';
+          drag.style.height = h + 'px';
+        }
+        // 鼠标离开和抬起取消缩放
+        drag.onmouseup = function () {
+          drag.onmousemove = null;
+          drag, onmouseup = null;
+        }
+        drag.onmouseleave = function () {
+          drag.onmousemove = null;
+          drag, onmouseup = null;
+        }
+      }
+    }
+  }
+ 
+</script>
+ 
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 100px;
+    }
+
+    #slide1 {
+      width: 30px;
+      height: 200px;
+      background-color: #ccc;
+      border-radius: 15px;
+      position: relative;
+    }
+
+    #slide1 s {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      position: absolute;
+      background-color: #adeded;
+    }
+
+    #slide1 b {
+      display: block;
+      width: 100%;
+      height: 0px;
+      background-color: skyblue;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      position: absolute;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="slide1" class="slide">
+    <b></b>
+    <s></s>
+  </div>
+  <h2 id="range1"> </h2>
+
+
+  <script>
+
+    +function fn() {
+      var slide = document.querySelector('#slide1')
+      var b = slide.querySelector('b')
+      var s = slide.querySelector('s')
+
+      var slideHeight = slide.clientHeight
+      var harfS = s.offsetHeight / 2;
+      var pct = null
+
+      s.style.bottom = '0px';
+      b.style.height = '0px';
+
+      s.onmousedown = function (event) {
+
+        var startY = event.clientX;
+        var startTop = s.offsetTop + harfS;
+        // var maxHeight = 0;
+
+        document.onmousemove = function (event) {
+          event.preventDefault;
+
+          var height = -(event.clientY - startY - startTop) - harfS;
+
+          pct = height / slideHeight * 100;
+
+          if (height <= 0) {
+            height = harfS;
+            pct = 0;
+          }
+          if (height >= slideHeight) {
+            height = slideHeight - harfS;
+            pct = 100;
+          }
+          s.style.bottom = (height - harfS) + 'px'
+          b.style.height = height + 'px'
+
+          var value = Math.round(pct)
+          range1.innerText = value + '%';
+
+        }
+
+        document.onmouseup = function () {
+          document.onmousemove = null;
+          document.onmouseup = null;
+        }
+
+      }
+
+
+    }()
+
+  </script>
+
+
+</body>
+
+</html>

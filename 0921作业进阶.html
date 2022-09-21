@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 100px;
+      background-color: #4E6A16;
+    }
+
+    #box {
+      width: 400px;
+      height: 200px;
+      border: 2px dashed #cccccc;
+      background-color: #ddd;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .change {
+      width: 10px;
+      height: 10px;
+      border: 1px solid #ffffff;
+      position: absolute;
+    }
+
+    .rightBottom {
+      right: -5px;
+      bottom: -5px;
+    }
+
+    .leftTop {
+      left: -5px;
+      top: -5px;
+    }
+
+    .leftBottom {
+      left: -5px;
+      bottom: -5px;
+    }
+
+    .rightTop {
+      right: -5px;
+      top: -5px;
+    }
+
+    .rightMid {
+      right: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .leftMid {
+      left: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .bottomMid {
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .topMid {
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="box">
+
+    <div class="change rightBottom"></div>
+    <div class="change leftTop"></div>
+    <div class="change leftBottom"></div>
+    <div class="change rightTop"></div>
+    <div class="change rightMid"></div>
+    <div class="change leftMid"></div>
+    <div class="change bottomMid"></div>
+    <div class="change topMid"></div>
+
+  </div>
+
+
+
+  <script>
+
+    +function fn() {
+
+      var box = document.querySelector('#box')        // 大盒子
+      var list = document.querySelectorAll('.change') // 所有小块
+
+      list.forEach(function (attr) {
+
+        var attrClass = attr.classList;
+        var THAT = attr;
+
+        // 右下
+        if ('rightBottom' === attrClass[1]) {
+
+          attr.onmousedown = function (event) {
+            var THIS = this;
+            THIS.style.cursor = 'se-resize';
+
+            // 获取鼠标的left和top值
+            var clientXY = {
+              x: event.clientX,
+              y: event.clientY,
+            }
+            // 获取开始时box的宽高
+            var boxWH = {
+              width: box.clientWidth,
+              height: box.clientHeight,
+            }
+
+            // 缓存坐标原点
+            var stickAttr = {
+              x: event.clientX - box.offsetWidth,
+              y: event.clientY - box.offsetHeight,
+            }
+
+            document.onmousemove = function (event) {
+              // 移动结束时的鼠标位置
+              var end = {
+                x: event.clientX, 
+                y: event.clientY,
+              }
+
+              // 移动的距离
+              var dist = {
+                x: end.x - clientXY.x,
+                y: end.y - clientXY.y,
+              }
+
+              box.style.width = stickAttr.x + dist.x + 'px';
+              box.style.height = stickAttr.y + dist.y + 'px';
+              console.log(end,clientXY)
+
+            }
+
+            document.onmouseup = function () {
+              THIS.style.cursor = 'default'
+              document.onmousemove = null;
+              document.onmouseup = null;
+            }
+          }
+
+        }
+
+        // // 左上
+        // if ('leftTop' == attrClass[1]) {
+
+        //   attr.onmousedown = function (event) {
+        //     var THIS = this;
+        //     THIS.style.cursor = 'nw-resize';
+
+        //     // 获取鼠标的left和top值
+        //     var clientXY = {
+        //       x: event.clientX,
+        //       y: event.clientY,
+        //     }
+        //     // 获取鼠标按下时box的宽高
+        //     var boxWH = {
+        //       width: THIS.clientWidth,
+        //       height: THIS.clientHeight,
+        //     }
+        //     // 缓存坐标原点
+
+
+        //     document.onmouseover = function (event) {
+
+        //     }
+
+        //     document.onmouseup = function () {
+        //       THIS.style.cursor = 'default'
+        //       document.onmousemove = null;
+        //       document.onmouseup = null;
+        //     }
+        //   }
+
+        // }
+
+
+
+        // // 左下 右上移动
+        // if ('toLeftBottom' == attrClass[1]) {
+
+        //   attr.onmousedown = function (event) {
+        //     var THIS = this;
+        //     THIS.style.cursor = 'sw-resize';
+
+        //     document.onmouseover = function (event) {
+
+        //     }
+
+        //     document.onmouseup = function () {
+        //       THIS.style.cursor = 'default'
+        //       document.onmousemove = null;
+        //       document.onmouseup = null;
+        //     }
+        //   }
+
+        // }
+
+        // // 左右移动
+        // if ('toRight' == attrClass[1]) {
+
+        //   attr.onmousedown = function (event) {
+        //     var THIS = this;
+        //     THIS.style.cursor = 'e-resize';
+
+        //     document.onmouseover = function (event) {
+
+        //     }
+
+        //     document.onmouseup = function () {
+        //       THIS.style.cursor = 'default'
+        //       document.onmousemove = null;
+        //       document.onmouseup = null;
+        //     }
+        //   }
+
+        // }
+
+        // // 上下移动
+        // if ('toTop' == attrClass[1]) {
+
+        //   attr.onmousedown = function (event) {
+        //     var THIS = this;
+        //     THIS.style.cursor = 's-resize';
+
+        //     document.onmouseover = function (event) {
+
+        //     }
+
+        //     document.onmouseup = function () {
+        //       THIS.style.cursor = 'default'
+        //       document.onmousemove = null;
+        //       document.onmouseup = null;
+        //     }
+        //   }
+
+        // }
+
+
+      })
+
+    }()
+
+  </script>
+
+
+</body>
+
+</html>
