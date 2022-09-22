@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .transfer {
+      float: left;
+      list-style: none;
+      margin: 0 30px 0;
+      padding: 20px;
+      width: 200px;
+      height: 200px;
+      background-color: aquamarine;
+    }
+
+    .transfer.over {
+      border: 1px solid red;
+    }
+
+    .transfer li {
+      user-select: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin: 5px 0;
+      background-color: #ccc;
+    }
+
+    .transfer li:hover {
+      background-color: #999;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <h1 align="center">拖拽版排序</h1>
+
+  <ul class="transfer">
+    <li draggable="true" index="1">联系我们1</li>
+    <li draggable="true" index="2">首页2</li>
+    <li draggable="true" index="3">产品中心3</li>
+    <li draggable="true" index="4">关于我们4</li>
+  </ul>
+
+
+  <script>
+
+    var ul = document.querySelector('.transfer')
+    var lis = document.querySelectorAll('[draggable="true"]');
+    var target = null
+    var targetHeight = null;
+    var arr = [];
+
+    lis.forEach(function (li) {
+
+      arr.push(li.offsetTop)
+
+      li.ondragstart = function () {
+        target = this;
+      }
+
+      // 获取移动时li的位置
+      li.ondrag = function (event) {
+        targetHeight = event.clientY;
+        // console.log(targetHeight)
+        // console.log(arr)
+      }
+
+      ul.ondragover = function (event) {
+        event.preventDefault();
+      }
+
+      // 放下
+      ul.ondrop = function () {
+        arr.forEach(function (height, i) {
+          if (height > targetHeight) {
+            lis[i].before(target);
+          }
+        })
+
+      }
+
+
+
+    })
+
+
+
+  </script>
+
+</body>
+
+</html>
