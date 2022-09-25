@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 代理data 对象，可以监听 增删改读
+
+    // var data = {
+    //   age: 21,
+    //   name: 'mike',
+    // }
+
+    // var info1 = new Proxy(data, {
+    //   get() {
+    //     console.log('读取')
+    //   },
+    //   set(val) {
+    //     console.log('设置')
+    //   },
+    //   deleteProperty() {
+    //     console.log('删除')
+    //   }
+
+    // })
+
+
+    // proxy 支持数组
+    // var arr = [1, 2, 3]
+    // var info2 = new Proxy(arr, {
+    //   get() {
+    //     console.log('读取')
+    //   },
+    //   set(val) {
+    //     console.log('设置')
+    //   },
+    //   deleteProperty() {
+    //     console.log('删除')
+    //   }
+
+    // })
+
+
+    // 完成对data的全部代理
+
+    var data = {
+      age: 21,
+      name: 'mike',
+    }
+
+    var info = new Proxy(data, {
+      get(target, key, p) {
+        console.log('读取')
+        return Reflect.get(target, key)
+      },
+      set(target, key, val, p) {
+        let result = Reflect.set(target, key, val)
+        if (result) {
+          console.log('设置成功')
+        } else {
+          console.log('设置失败')
+        }
+      },
+      deleteProperty(target, key, p) {
+        let result = Reflect.deleteProperty(target, key)
+        if (result) {
+          console.log('删除成功')
+        } else {
+          console.log('删除失败')
+        }
+      },
+
+    })
+
+
+  </script>
+
+
+</body>
+
+</html>
