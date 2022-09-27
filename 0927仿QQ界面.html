@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box,
+    .main,
+    .left,
+    .right {
+      display: flex;
+    }
+    #box {
+      width: 600px;
+      height: 400px;
+      background-color: #ddd;
+      border-radius: 15px;
+      flex-direction: column;
+      position: relative;
+    }
+    .title {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 24px;
+      background-image: linear-gradient(to right, #01ADF0, #01E27D);
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    .nav{
+      flex-grow: 1;
+      background-color: #eeeeee;
+    }
+    .main{
+      border-top: 2px solid #bbbbbb;
+      flex-grow: 8;
+    }
+    .left{
+      flex-direction: column;
+      flex-grow: 2;
+      align-self: stretch;
+      border-right: 1px solid #bbbbbb;
+    }
+    .right{
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .left .chat,
+    .left .message{
+      flex-grow: 1;
+    }
+    .left .chat{
+      border-bottom: 1px solid #bbbbbb;
+    }
+    .right .notice{
+      flex-grow: 1;
+      border-bottom: 1px solid #bbbbbb;
+    }
+    .right .member{
+      flex-grow: 2;
+    }
+
+    .attr{
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      position: absolute;
+      bottom: -8px;
+      right: -8px;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box">
+    <div class="title">标题</div>
+    <div class="nav">导航</div>
+    <div class="main">
+      <div class="left">
+        <div class="chat">聊天窗口</div>
+        <div class="message">输入信息</div>
+      </div>
+      <div class="right">
+        <div class="notice">通知窗口</div>
+        <div class="member">成员窗口</div>
+      </div>
+    </div>
+    <div class="attr">
+  </div>
+
+
+  </div>
+
+  <script>
+
+    // 缩放
+    var attr = document.querySelector('.attr')
+    attr.onmouseenter = function(){
+      attr.style.cursor = 'se-resize';
+    }
+    attr.onmouseleave = function(){
+      attr.style.cursor = 'default';
+      attr.onmousemove = null
+      attr.onmouseup = null
+    }
+    attr.onmousedown = function(event){
+      event.stopPropagation()
+      event.preventDefault()
+      var position = {
+        'w': box.offsetWidth,   // 被缩放元素的offsetWidth
+        'h': box.offsetHeight,  // 被缩放元素的offsetHeight
+        'x': event.clientX,     // 当前窗口鼠标指针的水平坐标
+        'y': event.clientY,     // 当前窗口鼠标指针的垂直坐标
+      }
+      attr.onmousemove = function(event){
+        event.preventDefault()
+        var w = event.clientX - position.x + position.w
+        var h = event.clientY - position.y + position.h
+
+        box.style.width = w + 'px'
+        box.style.height = h + 'px'
+      }
+
+      attr.onmouseup = function(){
+        attr.onmousemove = null
+        attr.onmouseup = null
+      }
+
+    }
+
+
+    // 拖拽
+    var title = document.querySelector('.title')
+    title.onmousedown = function(event){
+      var offsetX = event.clientX - box.offsetLeft;    // 水平方向的距离
+      var offsetY = event.clientY - box.offsetTop;     // 垂直方向的距离
+      
+
+      document.onmousemove = function(event){
+        var currentLeft = event.clientX - offsetX;
+        var currentTop = event.clientY - offsetY;
+
+        box.style.left = currentLeft + 'px'
+        box.style.top = currentTop + 'px'
+
+      }
+
+      document.onmouseup = function(){
+        document.onmousemove = null
+      }
+
+
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>
