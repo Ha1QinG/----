@@ -115,7 +115,7 @@
         'x': event.clientX,     // 当前窗口鼠标指针的水平坐标
         'y': event.clientY,     // 当前窗口鼠标指针的垂直坐标
       }
-      attr.onmousemove = function(event){
+      document.onmousemove = function(event){
         event.preventDefault()
         var w = event.clientX - position.x + position.w
         var h = event.clientY - position.y + position.h
@@ -124,8 +124,8 @@
         box.style.height = h + 'px'
       }
 
-      attr.onmouseup = function(){
-        attr.onmousemove = null
+      document.onmouseup = function(){
+        document.onmousemove = null
         attr.onmouseup = null
       }
 

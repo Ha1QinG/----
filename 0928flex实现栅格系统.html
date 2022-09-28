@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    .container {
+      display: flex;
+      background-color: #eee;
+      padding: 0 20px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .container>div {
+      height: 200px;
+      width: 100%;
+      background-color: red;
+      margin: 20px 10px;
+      flex-grow: 1;
+    }
+
+    @media screen and (min-width: 768px) {
+      .container .col-sm-6 {
+        width: 45%;
+      }
+    }
+    @media screen and (min-width: 992px) {
+      .container .col-md-4 {
+        width: 23%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <span>1</span>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <span>2</span>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <span>3</span>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <span>4</span>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

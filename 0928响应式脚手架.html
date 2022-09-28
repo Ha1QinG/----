@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/float-grid.css">
+  <style>
+    body{
+      margin: 0;
+      background-color: #EBEBEB;
+    }
+    .box{
+      text-align: center;
+    }
+    .head{
+      width: 100%;
+      height: 300px;
+      background-color: #fff;
+      margin-bottom: 40px;
+    }
+    .head .title{
+      height: 200px;
+      width: 100%;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .col-lg-8 span{
+      display: block;
+      height: 200px;
+      padding: 10px;
+      background-color: #fff;
+      margin-bottom: 20px;
+    }
+    .col-lg-4 span{
+      display: block;
+      height: 100px;
+      padding: 10px;
+      background-color: #fff;
+      margin-bottom: 25px;
+    }
+
+    .footer{
+      background-color: #1F1F1F;
+    }
+    .footer span{
+      display: block;
+      height: 200px;
+      padding: 20px;
+      margin: 40px 0;
+      background-color: #313131;
+      color: #6D6D6B;
+      line-height: 200px;
+    }
+    @media screen and (min-width: 992px){
+      .footer span{
+        height: 300px;
+      }
+      .col-lg-8 span{
+        height: 400px;
+      }
+      .col-lg-4 span{
+        height: 300px;
+      }
+    }
+    .copy{
+      height: 60px;
+      background-color: #111111;
+      color: #6D6D6B;
+      line-height: 60px;
+    }
+  </style>
+</head>
+<body>
+  
+<div class="box">
+  <div class="head">
+    <div class="title">横幅</div>
+    <div class="nav">导航</div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-8">
+        <span>文章列表1</span>
+        <span>文章列表2</span>
+        <span>文章列表3</span>
+        <span>文章列表4</span>
+      </div>
+
+      <div class="col-xs-12 col-lg-4">
+        <span>声明</span>
+        <span>下载</span>
+        <span>标签云</span>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-4">
+          <span>底部链接1</span>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <span>底部链接1</span>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <span>底部链接1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="copy">
+      版权信息
+    </div>
+
+  </div>
+
+
+</div>
+
+</body>
+</html>
