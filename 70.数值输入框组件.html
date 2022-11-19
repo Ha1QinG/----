@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  .gx-number{
+    display: inline-flex;
+  }
+  .gx-number input{
+    text-align:center;
+    width:60px;
+  }
+  </style>
+</head>
+<body style="margin: 50px;">
+  
+  <div id="app">
+ 
+    <h2>失效</h2>
+    <gx-number disabled></gx-number>
+
+    <h2>默认值</h2>
+    <gx-number v-model="price"></gx-number>
+    <p>您输入的值：{{price}}</p>
+    
+    <h2>最小值和最大值和步进</h2>
+    <gx-number v-model="price" :min="5" :max="10" :step="3"></gx-number>
+    <p>您输入的值：{{price}}</p>
+
+    <h2>change事件</h2>
+    <gx-number v-model="price" @change="onChange"></gx-number>
+
+    <h2>输入无效的值</h2>
+    <gx-number v-model="price" :min="5" :max="10"></gx-number>
+
+  
+  </div>
+
+  <script src="js/vue2_script.js"></script>
+  <script>
+  Vue.component('GxNumber', {
+    inheritAttrs: false,
+    props: {
+      value: Number,
+      min: Number,
+      max: Number,
+      step: {
+        type: Number,
+        default: 1
+      }
+    },
+    data(){
+      return {
+        val: this.value,
+        oldVal: this.value
+      }
+    },
+    watch: {
+      val( value, old ){
+        if( !isNaN(old) ) this.oldVal = old;
+        this.$emit('input', value );
+        this.$emit('change', value );
+      }
+    },
+    template: `
+    <span class="gx-number">
+      <button :disabled="$attrs.disabled || val<=min"  @click="sub"> - </button>
+      <input v-bind="$attrs" v-model="val" @change="change">
+      <button :disabled="$attrs.disabled || val>=max" @click="add"> + </button>
+    </span>
+    `,
+    methods: {
+      sub(){
+        this.val -= this.step;
+        if( this.val < this.min ){
+          this.val = this.min;
+        }
+      },
+      add(){
+        this.val += this.step;
+        if( this.val > this.max ){
+          this.val = this.max;
+        }
+      },
+      change(){
+        if( isNaN(this.val) ){
+          this.val = this.oldVal;
+        }else if( this.val < this.min ){
+          this.val = this.min;
+        }else if( this.val > this.max ){
+          this.val = this.max;
+        }
+      }
+    }
+  })
+
+
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      price: 6
+    },
+    methods: {
+      onChange( val ){
+        console.log( val );
+      }
+    }
+  })
+  </script>
+
+
+</body>
+</html>
